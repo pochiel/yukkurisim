@@ -131,25 +131,27 @@ public class Widget_Dialog extends Widget_Base {
     
 	public void Popup_Dialog_Window(String message)
 	{
-		if( !this.isActive() )
+		if( PopupQue.size()<=1 )
 		{
-			this.setActiveToFade(true);	
+			this.setActiveToFade(true);
+			PopupQue.add(message);
 			//this.BackupTimerStatus=GTimer.isMoving();	必要になるだろうか？
 			GameTimer.Get_Instance(owner, 定数.画像番号_タイマ).Stop_Timer();
-			this.Label_Popup.Set_Mymessage(message);
+			this.Label_Popup.Set_Mymessage(PopupQue.peek());	// 取り出しするが、削除しない
 			this.Label_Popup.Set_Relative_Position((this.getWidth()/2)-(Label_Popup.getWidth()/2), 40);
 		}
 		else
 		{
-			PopupQue.offer(message);
+			PopupQue.offer(message);	//追加
 		}
 	}
 	
 	public void Kill_Dialog_Window()
 	{
-		if( PopupQue.size()>0)
+		if( PopupQue.size()>1 )
 		{	// まだメッセージ残ってますやん
-			this.Label_Popup.Set_Mymessage(PopupQue.poll());
+			PopupQue.remove();	//最先頭（現在表示しているメッセージ）を削除
+			this.Label_Popup.Set_Mymessage(PopupQue.peek());
 			this.Label_Popup.Set_Relative_Position((this.getWidth()/2)-(Label_Popup.getWidth()/2), 40);
 		}
 		else

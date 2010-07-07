@@ -478,7 +478,7 @@ public class Widget_Action extends Widget_Base {
     	{
     		this.Checkboxs.render(g);
     	}
-    	System.out.println("this¨"+this+"  this.alp¨"+this.alpha+"   this.isact¨"+this.isActive());
+    	//System.out.println("this¨"+this+"  this.alp¨"+this.alpha+"   this.isact¨"+this.isActive());
     }
     
     public void doOnMouseEvent()

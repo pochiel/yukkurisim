@@ -32,15 +32,15 @@ public class FarmAction extends ItemGeneratorActionBase {
 		DefaultTable.put(2,1);
 		DefaultTable.put(3,1);
 		DefaultTable.put(4,1);
-		DefaultTable.put(5,0);
-		DefaultTable.put(6,0);
-		DefaultTable.put(7,0);
-		DefaultTable.put(8,0);
-		DefaultTable.put(9,0);
-		DefaultTable.put(10,0);
-		DefaultTable.put(11,0);
-		DefaultTable.put(12,0);
-		DefaultTable.put(13,0);
+		DefaultTable.put(5,1);
+		DefaultTable.put(6,1);
+		DefaultTable.put(7,1);
+		DefaultTable.put(8,1);
+		DefaultTable.put(9,1);
+		DefaultTable.put(10,1);
+		DefaultTable.put(11,1);
+		DefaultTable.put(12,1);
+		DefaultTable.put(13,1);
 		DefaultTable.put(14,0);
 		DefaultTable.put(15,0);
 		DefaultTable.put(16,0);
@@ -254,7 +254,7 @@ public class FarmAction extends ItemGeneratorActionBase {
 		tmp.put(3,4);
 		tmp.put(4,4);
 		tmp.put(5,4);
-		tmp.put(6,4);		
+		tmp.put(6,4);
 
 	}
 
@@ -271,6 +271,7 @@ public class FarmAction extends ItemGeneratorActionBase {
 		y.setHungry( y.getHungry() + 100 + sai.nextInt(50) );	// ‚¿‚å‚Á‚Æ‚¾‚¯‹ó• ‚ª‰ñ•œi‚Â‚Ü‚İ‚®‚¢H
 		y.setSweety( y.getSweety() - 10  - sai.nextInt(40) );	// ‚¿‚å‚Á‚Æ‚¾‚¯ŠÃ‚³‚ª‰º‚ª‚é
 		y.setHP( y.getHP() - 20  - sai.nextInt(30));			// ‚¿‚å‚Á‚Æ‚¾‚¯HP‚ª‰º‚ª‚é
+		
 	}
 
 	@Override
