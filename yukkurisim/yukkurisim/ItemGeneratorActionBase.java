@@ -20,6 +20,14 @@ public abstract class ItemGeneratorActionBase {
 	protected HashMap<Integer,Integer> DefaultTable;				// デフォルトテーブル
 	protected Vector< HashMap<Integer,Integer> > UniqueTable;	// ユニークテーブルのベクタ
 	protected yukkurisim_main owner;
+	
+	protected String GetMessage = "";						// アイテムを獲得したときのメッセージ「●●を獲得しました」の部分が入る。
+															// この関数の実装を強要する。
+	/**
+	 * アイテム獲得時のメッセージテンプレート文字列を初期化する。
+	 */
+	public abstract void InitGetMessage();
+
 	/**
 	 * コンストラクタ
 	 *
@@ -37,6 +45,7 @@ public abstract class ItemGeneratorActionBase {
 	{
 		InitDefaultItemTable();
 		InitUniqueItemTable();
+		InitGetMessage();
 	}
 	
 	/**
@@ -92,7 +101,7 @@ public abstract class ItemGeneratorActionBase {
 				{	// ここでアイテム取得確定
 					ItemManager iman = ItemManager.Get_Instance(owner);
 					iman.setItemIncrement(itemNum);
-					Widget_Manager.Get_Instance(owner).Popup_Dialog_Window(iman.getItemName(itemNum)+"を収穫しました！");
+					Widget_Manager.Get_Instance(owner).Popup_Dialog_Window(iman.getItemName(itemNum)+GetMessage);
 					System.out.println("アイテム獲得→"+itemNum);
 				}
 			}
@@ -110,7 +119,7 @@ public abstract class ItemGeneratorActionBase {
 				{	// ここでアイテム取得確定
 					ItemManager iman = ItemManager.Get_Instance(owner);
 					iman.setItemIncrement(itemNum);
-					Widget_Manager.Get_Instance(owner).Popup_Dialog_Window(iman.getItemName(itemNum)+"を収穫しました！");
+					Widget_Manager.Get_Instance(owner).Popup_Dialog_Window(iman.getItemName(itemNum)+GetMessage);
 					System.out.println("アイテム獲得→"+itemNum);
 				}
 			}

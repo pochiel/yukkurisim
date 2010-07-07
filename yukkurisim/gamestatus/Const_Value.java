@@ -37,6 +37,8 @@ public class Const_Value {
 	public final	int ”_‹Æ’† = STATE_FARMING;
 	public final	int STATE_FARMED = 5;
 	public final	int ”_‹ÆŒã‘Ò‹@’† = STATE_FARMED;
+	public final	int STATE_HANTED = 6;
+	public final	int Žë‚èŒã‘Ò‹@’† = STATE_HANTED;
 
 	//****************Ž€–SŒnó‘Ô(state>=100‚ÅŽ€–S”»’è)
 	public final	int STATE_DEAD = 100;

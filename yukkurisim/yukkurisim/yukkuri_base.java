@@ -138,6 +138,44 @@ public class yukkuri_base extends Object_base
 	 */
 	public void doKari(long elapsedTime)
 	{
+		if(this.state < 定数.死亡 )
+		{
+			// 空腹度減算処理
+			if( this.y_hungry >= 1)
+			{
+				this.y_hungry -= 1;
+			}
+			if( this.y_hungry <= 0 )
+			{	//空腹度が0になったら死ぬ
+				this.setState(定数.死亡);
+			}
+			else	///////////// 以下、平常時処理 ///////////////
+			{
+				if( GameTimer.Get_Instance(owner, 0).Get_Times() == 定数.一日の長さ/2)
+				{	// get_instanceの二つめの引数はダミー
+					//アイテム取得処理
+					KariAction.Get_Instance(owner).getItemChallenge(this);
+					System.out.println("タイマ動作→"+GameTimer.Get_Instance(owner, 0).Get_Times());
+					this.setState(定数.狩り後待機中);
+				}
+				else if( this.state == 定数.農業後待機中 )
+				{
+					//今のところ動かない
+				}
+			}
+			
+		}
+		// 死亡していなければここまで、以下は死亡したときの処理
+		else
+		{
+			//最終フレームならばそこでとめる。
+			if( this.getFinishAnimationFrame() == this.getFrame() )
+			{
+				this.setAnimate(false);
+				this.setActive(false);
+			}
+		}
+		//UpdateImage();
 		
 	}
 	

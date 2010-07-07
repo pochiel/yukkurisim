@@ -4,7 +4,7 @@ public class GameInfoManager {
 	protected  Const_Value 定数 = new Const_Value();
 	private static GameInfoManager myself;
 	private int myCash;
-	
+	private int call_day;
 	
 	/******* インスタンスを得る ********/
 	public static synchronized GameInfoManager Get_Instance( )

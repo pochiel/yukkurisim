@@ -276,4 +276,9 @@ public class KariAction extends ItemGeneratorActionBase {
 		y.setHP( y.getHP() - 20  - sai.nextInt(30));			// ‚¿‚å‚Á‚Æ‚¾‚¯HP‚ª‰º‚ª‚é
 	}
 
+	@Override
+	public void InitGetMessage() {
+		GetMessage = "‚ğŠl“¾‚µ‚½I";
+	}
+
 }

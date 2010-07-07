@@ -82,7 +82,7 @@ public abstract class Scene_Base {
 
 	        // アルファ値セット
         	//g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
-        	g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, alpha));
+        	g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
 		}
 	}
 	

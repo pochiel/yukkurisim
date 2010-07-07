@@ -273,4 +273,9 @@ public class FarmAction extends ItemGeneratorActionBase {
 		y.setHP( y.getHP() - 20  - sai.nextInt(30));			// ‚¿‚å‚Á‚Æ‚¾‚¯HP‚ª‰º‚ª‚é
 	}
 
+	@Override
+	public void InitGetMessage() {
+		this.GetMessage = "‚ğûŠn‚µ‚½I";
+	}
+
 }

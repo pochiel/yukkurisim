@@ -1,5 +1,8 @@
 package game_scene;
 
+import gamestatus.GameInfoManager;
+import gamestatus.GameTimer;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.io.Serializable;
@@ -181,11 +184,15 @@ public class Game01 extends Scene_Base  implements Serializable {
 
        	OwnCursor = Cursor_Manager.Get_Instance(owner);		// カーソルスクロール
        	
+       	call_day = -1;
+       	
        	this.FadeInScreen();
        	
     }
     
-	public void update(long elapsedTime)
+	private int call_day;
+	
+    public void update(long elapsedTime)
 	{
 		super.update(elapsedTime);
 		
@@ -203,6 +210,30 @@ public class Game01 extends Scene_Base  implements Serializable {
 		OwnCursor.update(elapsedTime);			// カーソルスクロール
 		
 		owner.phy_law.checkCollision();			// 衝突検出
+		
+		if(GameTimer.Get_Instance(owner, 0).Get_Times() == 定数.一日の長さ/2)
+		{
+			int tmp = GameTimer.Get_Instance(owner, 定数.画像番号_タイマ).Get_Days();
+
+			if( tmp != call_day)	// 現在日時と最終通達時刻が違う（まだ今日は終業を通知してない）
+			{
+				for(int i=0;i<定数.TYPE_キャラクター系タイプ総数;i++)
+				{
+					if( (GameInfoManager.Get_Instance().getPlayPartState(i) == 定数.アクション_狩り)||
+						(GameInfoManager.Get_Instance().getPlayPartState(i) == 定数.アクション_農業)	)
+					{
+						Widget_Manager.Get_Instance(owner).Popup_Dialog_Window("今日のお仕事はおしまいです。");
+						GameTimer.Get_Instance(owner, 0).Time_Inc();
+						call_day = tmp;
+						break;
+					}
+					/*else if( GameInfoManager.Get_Instance().getPlayPartState(this.Get_Type()-100) == 定数.アクション_遊ぶ)
+					{
+						doPlay(elapsedTime);
+					}*/
+				}
+			}	
+		}
 	}
 	
 	public void render(Graphics2D g)
