@@ -12,11 +12,11 @@ import java.awt.image.BufferedImage;
  * @author pochiel
  *
  */
-public class ImageLoader {
-	private HashMap<Integer,BufferedImage[]> imagemap = new HashMap<Integer,BufferedImage[]>();
+public class ImageLoader extends Thread {
+	private volatile HashMap<Integer,BufferedImage[]> imagemap = new HashMap<Integer,BufferedImage[]>();
 	private yukkurisim_main owner;					//オーナーGameインスタンスへの参照
 	private  Const_Value 定数 = new Const_Value();
-	private static ImageLoader myself;
+	private volatile static ImageLoader myself;
 	
 	/**
 	 * コンストラクタ
@@ -25,7 +25,11 @@ public class ImageLoader {
 	public ImageLoader(yukkurisim_main own)
 	{
 		owner = own;
-		LoadImage();	// 画像のロード
+		//LoadImage();	// 画像のロード
+	}
+	
+	public void run() {
+		LoadImage();	// 画像のロード開始
 	}
 	
 	/******* インスタンスを得る(親インスタンスと引き換え) ********/
@@ -40,7 +44,7 @@ public class ImageLoader {
 	}
 
 	
-	public void LoadImage()
+	public synchronized void LoadImage()
 	{
 		setBufferedImage(定数.画像番号_ゆっくりれいむ歩く,owner.getImages("image/reimuwalk.gif",12,1));
 		setBufferedImage(定数.画像番号_ゆっくりれいむ待つ,owner.getImages("image/reimuwait.gif",6,1));
@@ -97,10 +101,9 @@ public class ImageLoader {
 		setBufferedImage(定数.画像番号_アイテムウインドウ,owner.getImages("image/widget/window_ItemUse.GIF",1,1));
 		setBufferedImage(定数.画像番号_ダイアログOK,owner.getImages("image/widget/DialogOK.GIF",1,1));
 		setBufferedImage(定数.画像番号_アイテムハテナ,owner.getImages("item/hatena.gif",1,1));
-		
 	}
 	
-	private void setBufferedImage(int i,BufferedImage[] image)
+	private synchronized void setBufferedImage(int i,BufferedImage[] image)
 	{
 		if(imagemap.get(i)!=null){
 			// もうすでになんか入ってる！
@@ -113,7 +116,7 @@ public class ImageLoader {
 		
 	}
 	
-	public BufferedImage[] getBufferedImage(int i)
+	public synchronized BufferedImage[] getBufferedImage(int i)
 	{
 		//System.out.println("getBufferedImage("+i+")→"+(imagemap.get(i)==null?"null":imagemap.get(i)));
 		if(imagemap.get(i)==null)
@@ -129,7 +132,7 @@ public class ImageLoader {
 	 * @param img
 	 * @return
 	 */
-	private BufferedImage[] reversImage(BufferedImage [] img)
+	private synchronized BufferedImage[] reversImage(BufferedImage [] img)
 	{
 		AffineTransform at = AffineTransform.getScaleInstance(-1.0, 1.0);
 		at.translate(-1*(img[0].getWidth()), 0);

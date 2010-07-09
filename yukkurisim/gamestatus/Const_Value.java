@@ -95,6 +95,7 @@ public class Const_Value {
 		public final int SCENE_TITLE	=	1;		//タイトル
 		public final int SCENE_GAME01 =	2;		//ゲーム１
 		public final int SCENE_LOAD	=	3;		//ロードシーン
+		public final int SCENE_LOADING=	10;		//ローディング表示
 		public final int SCENE_TEST	=	10000;	//テストシーン
 		public final int SCENE_TEST_02=	10001;	//テストシーン02
 	

@@ -44,7 +44,8 @@ public class TitleScene extends Scene_Base {
 			if(this.Button_id==定数.ボタンID_タイトル01)
 			{
 				this.Get_Root_Parent().setActiveToFade(false);
-				TitleScene.this.FadeOutToScene(定数.SCENE_GAME01);
+				owner.setLoadEndedScene(定数.SCENE_GAME01);			// ローディング画面終了後の移動先シーンセット
+				TitleScene.this.FadeOutToScene(定数.SCENE_LOADING);// ローディング画面表示
 				//owner.JumpSceneto(定数.SCENE_GAME01);
 			}
 			if(this.Button_id==定数.ボタンID_タイトル02)
@@ -180,14 +181,20 @@ public class TitleScene extends Scene_Base {
 			}
 			else
 			{
-				this.FadeOutToScene(定数.SCENE_GAME01);
+				owner.setLoadEndedScene(定数.SCENE_GAME01);			// ローディング画面終了後の移動先シーンセット
+				this.FadeOutToScene(定数.SCENE_LOADING);			// ローディング画面表示
+
+				//this.FadeOutToScene(定数.SCENE_GAME01);
 				//owner.JumpSceneto(定数.SCENE_GAME01);
 			}
 		}
 		
 		else if(Label_load.isClicked())
 		{
-			this.FadeOutToScene(定数.SCENE_LOAD);
+			owner.setLoadEndedScene(定数.SCENE_LOAD);			// ローディング画面終了後の移動先シーンセット
+			this.FadeOutToScene(定数.SCENE_LOADING);			// ローディング画面表示
+
+			//this.FadeOutToScene(定数.SCENE_LOAD);
 			//owner.JumpSceneto(定数.SCENE_LOAD);		//ロードシーンへジャンプ
 		}
 	}

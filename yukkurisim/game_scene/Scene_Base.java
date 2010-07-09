@@ -41,6 +41,7 @@ public abstract class Scene_Base {
 		定数 = new Const_Value();
 				
 	}
+	
 	public void update(long elapsedTime)
 	{
 		if( FadeOutFLG )
@@ -48,6 +49,7 @@ public abstract class Scene_Base {
 			alpha -= 0.01f;
 			if(RenderedZeroAlpha)
 			{
+				DestractFadeOut();	// 終了処理
 				owner.JumpSceneto(NextSceneNo);
 			}
 		}
@@ -108,5 +110,14 @@ public abstract class Scene_Base {
 	public boolean GameIsFading()
 	{
 		return FadeInFLG||FadeOutFLG;
+	}
+	
+	/**
+	 * フェードアウトし切った時にコールされる終了処理
+	 *
+	 */
+	public void DestractFadeOut()
+	{
+		
 	}
 }

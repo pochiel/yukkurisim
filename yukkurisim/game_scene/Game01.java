@@ -77,9 +77,8 @@ public class Game01 extends Scene_Base  implements Serializable {
     	this.alpha = 0.0f;
 
     	this.background = new ColorBackground(Color.black, ’è”.‰æ–Ê•, ’è”.‰æ–Ê‚‚³);
-    	
-    	iLoader = ImageLoader.Get_Instance(owner);
 
+    	iLoader = ImageLoader.Get_Instance(owner);
     	OnMapObj = new MapObject_Manager(owner,"YUKKURI_REIMU");
     	
     	/********** ƒ}ƒbƒv‚ÌéŒ¾ ***********************/

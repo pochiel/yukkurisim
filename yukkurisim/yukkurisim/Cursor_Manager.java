@@ -30,7 +30,6 @@ public class Cursor_Manager extends ADV_SpriteGroup_base {
 		super(own,"CURSOR");
 		owner = own;
 	}
-
 	/******* インスタンスを得る(親インスタンスと引き換え) ********/
 	public static synchronized Cursor_Manager Get_Instance( yukkurisim_main own )
 	{
@@ -122,11 +121,13 @@ public class Cursor_Manager extends ADV_SpriteGroup_base {
 	}
 	
     public void render(Graphics2D g) {
+    	CheckCursorInstanceisNotNull();
+    	
     	double dmy_x;
     	double dmy_y;
     	double bkmy_x=myCursor.my_x;
     	double bkmy_y=myCursor.my_y;
-		
+    	
     	if( myCursor.isActive() )
     	{
     		for(int j=CursorHeight-1;j>=0;j--)
@@ -221,8 +222,8 @@ public class Cursor_Manager extends ADV_SpriteGroup_base {
 			myCursor = new Mapchip_base
 			(
 					owner , 
-					//owner.getImages("image/cursor.gif", 4, 1),
-					ImageLoader.Get_Instance(owner).getBufferedImage(定数.画像番号_カーソル),
+					owner.getImages("image/cursor.gif", 4, 1),
+					//ImageLoader.Get_Instance(owner).getBufferedImage(定数.画像番号_カーソル),		カーソルは各ObjectBaseでイニシャライズされるため、ImageLoaderを経由できない、マジウンコソースになってしまった
 					0,
 					0,
 					0

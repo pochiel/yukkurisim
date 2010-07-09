@@ -34,6 +34,8 @@ public class yukkurisim_main extends Game implements Serializable {
     TitleScene				title;
     Game01					gamescene;						//ニューゲームのシーン
     LoadGame				loadscene;						//ゲームのロードシーン
+    Loading					nowloading;						//ゲームのローディングシーン
+    
     /**
      * 初期化
      */
@@ -45,11 +47,13 @@ public class yukkurisim_main extends Game implements Serializable {
     	phy_law = Physical_Law_Facade.Get_Instance(this);
     	
     	/*********** シーンの宣言 ここから **************/
-    	title 	= new TitleScene(this);				//タイトル画面
-    	
+    	title 	= new TitleScene(this);				// タイトル画面
+    	nowloading = new Loading(this);				// ローディング
+
     	//シーンの初期化
     	title.initResources();
-
+    	nowloading.initResources();
+    	
     	/*********** シーンの宣言 ここまで **************/
     	SceneNo = 定数.SCENE_TITLE;		//タイトルシーンからスタート
     }
@@ -71,6 +75,10 @@ public class yukkurisim_main extends Game implements Serializable {
         if( SceneNo == 定数.SCENE_LOAD )
         {
         	loadscene.update(elapsedTime);
+        }
+        if( SceneNo == 定数.SCENE_LOADING)
+        {
+        	nowloading.update(elapsedTime);
         }
         	
         // ESCで終了        
@@ -96,6 +104,11 @@ public class yukkurisim_main extends Game implements Serializable {
         {
         	loadscene.render(g);
         }
+        if(SceneNo == 定数.SCENE_LOADING)
+        {
+        	nowloading.render(g);
+        }
+
     }
 
     public static void main(String[] args) {
@@ -117,6 +130,8 @@ public class yukkurisim_main extends Game implements Serializable {
     }*/
     public void JumpSceneto(int no)
     {
+    	SceneNo = no;
+    	
     	if( (no==定数.SCENE_GAME01)&&(gamescene==null) )
     	{
         	gamescene = new Game01(this);					//ニューゲームのシーン
@@ -127,7 +142,6 @@ public class yukkurisim_main extends Game implements Serializable {
         	loadscene = new LoadGame(this);				//ゲームのロードシーン
         	loadscene.initResources();
     	}
-    	SceneNo = no;
     }
 
     /**
@@ -148,8 +162,32 @@ public class yukkurisim_main extends Game implements Serializable {
         {
         	return loadscene.GameIsFading();
         }
+        if(SceneNo == 定数.SCENE_LOADING)
+        {
+        	return nowloading.GameIsFading();
+        }
+        
         return false;
-
 	}
 
+	/** ローディングクラスから受け渡されるイメージローダクラスへのインスタンス受け取り窓口 **/
+	public void setImageLoader( ImageLoader i )
+	{
+		iLoader = i;
+	}
+	
+	public ImageLoader getImageLoader()
+	{
+		return iLoader;
+	}
+	
+	
+	/**
+	 * ローディングシーンに入る前に、ロード終了後のシーンを通知しておく
+	 * @param sceneno
+	 */
+	public void setLoadEndedScene( int sceneno )
+	{
+		nowloading.setNextSceneNo(sceneno);
+	}
 }
