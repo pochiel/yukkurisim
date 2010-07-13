@@ -101,6 +101,7 @@ public class ImageLoader extends Thread {
 		setBufferedImage(定数.画像番号_アイテムウインドウ,owner.getImages("image/widget/window_ItemUse.GIF",1,1));
 		setBufferedImage(定数.画像番号_ダイアログOK,owner.getImages("image/widget/DialogOK.GIF",1,1));
 		setBufferedImage(定数.画像番号_アイテムハテナ,owner.getImages("item/hatena.gif",1,1));
+
 	}
 	
 	private synchronized void setBufferedImage(int i,BufferedImage[] image)

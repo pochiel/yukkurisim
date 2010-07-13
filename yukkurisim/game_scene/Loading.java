@@ -1,8 +1,15 @@
 package game_scene;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 
 import yukkurisim.ImageLoader;
+import yukkurisim.Object_base;
+import yukkurisim.Other_Object;
+import yukkurisim.Widget_Base;
 import yukkurisim.yukkurisim_main;
 
 public class Loading extends Scene_Base {
@@ -20,10 +27,16 @@ public class Loading extends Scene_Base {
 	 */
 	
 	private int LoadExitedScene;
-	private boolean nowLoading;
-	private boolean nowFading;
+	private boolean 		nowLoading;
+	private boolean 		nowFading;
 	
-	private ImageLoader iLoadertmp;
+	private Object_base	RotateYukkuri;		// 回転しているゆっくり
+	private Widget_Base	NowLoadingText;		// 饅頭祈祷中...の文字
+	private boolean		isFadeOutNow;		// 文字がフェードアウトしているかを制御する
+	private BufferedImage[] yImage;			// ゆっくりの画像
+	private int			rotatesize;			// 回転角度(360度法)
+	
+	private ImageLoader 	iLoadertmp;
 	
 	/** ローディング中に表示するクラス **/
 	public Loading(yukkurisim_main own) {
@@ -34,7 +47,8 @@ public class Loading extends Scene_Base {
 	public void render(Graphics2D g)
 	{
 		super.render(g);
-		//System.out.println("Now loading....");
+		NowLoadingText.render(g);
+		RotateYukkuri.render(g);
 	}
 	
 	public void initResources() 
@@ -43,11 +57,79 @@ public class Loading extends Scene_Base {
 		LoadExitedScene = -1;
 		nowLoading = false;
 		nowFading = false;
+		rotatesize = 0;
+		
+		yImage = owner.getImages("image/reimuwait.gif",6,1);
+		
+		RotateYukkuri = new Other_Object(owner , yImage);
+		NowLoadingText = new Widget_Base(	owner,
+				"饅頭祈祷中...",
+				0,
+				0,
+				null);
+		NowLoadingText.setLocation(定数.画面幅 - NowLoadingText.getWidth() - 10, 5 + ( RotateYukkuri.getHeight()/2 ) - ( NowLoadingText.getHeight()/2 ));
+		NowLoadingText.setAlpha(0);
+		NowLoadingText.setFontColor(Color.white);		// 文字色は白
+		NowLoadingText.setBackground(this.background);
+		NowLoadingText.setActive(true);
+		isFadeOutNow = false;							// 文字がフェードアウトしているかを制御する
+		RotateYukkuri.setLocation(NowLoadingText.getX() - RotateYukkuri.getWidth() , 5);
+		RotateYukkuri.setAnimate(true);
+		RotateYukkuri.setBackground(this.background);
 	}
 	
 	public void update(long elapsedTime)
 	{
+		AffineTransform at = new AffineTransform();
 		super.update(elapsedTime);
+		if(isFadeOutNow)
+		{
+			NowLoadingText.setAlpha(NowLoadingText.getAlpha() - 0.02f);
+			if( NowLoadingText.getAlpha() <= 0.0f )
+			{
+				NowLoadingText.setAlpha(0.0f);
+				isFadeOutNow = false;
+			}
+			
+			at.setToRotation(Math.toRadians(rotatesize+=2),(yImage[1].getWidth() / 2),(yImage[1].getHeight()/2));	// 回転のセット
+			if( rotatesize >= 360 )
+			{
+				rotatesize = 0;
+			}
+			AffineTransformOp atOp = new AffineTransformOp(at, null);
+
+			BufferedImage[] revimg = new BufferedImage[yImage.length];
+			for(int i=0;i<yImage.length;i++)
+			{
+				revimg[i] = atOp.filter(yImage[i], null);	// 実際に画像変換を行ってるのはココ
+			}
+			RotateYukkuri.setImages(revimg);
+		}
+		else
+		{
+			NowLoadingText.setAlpha(NowLoadingText.getAlpha() + 0.02f);
+			if( NowLoadingText.getAlpha() >= 1.0f )
+			{
+				NowLoadingText.setAlpha(1.0f);
+				isFadeOutNow = true;
+			}
+			
+			at.setToRotation(Math.toRadians(rotatesize+=2),(yImage[1].getWidth() / 2),(yImage[1].getHeight()/2));	// 回転のセット
+
+			if( rotatesize >= 360 )
+			{
+				rotatesize = 0;
+			}
+			AffineTransformOp atOp = new AffineTransformOp(at, null);
+
+			BufferedImage[] revimg = new BufferedImage[yImage.length];
+			for(int i=0;i<yImage.length;i++)
+			{
+				revimg[i] = atOp.filter(yImage[i], null);	// 実際に画像変換を行ってるのはココ
+			}
+			RotateYukkuri.setImages(revimg);
+		}
+		System.out.println("   NowLoadingalp->"+NowLoadingText.getAlpha());
 		if( !nowLoading )
 		{	
 			if( !nowFading )
@@ -92,7 +174,9 @@ public class Loading extends Scene_Base {
 	 */
 	public void DestractFadeOut()
 	{
+		super.DestractFadeOut();
 		nowFading = false;
 		LoadExitedScene = -1;
+		
 	}
 }

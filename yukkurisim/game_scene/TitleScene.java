@@ -202,7 +202,6 @@ public class TitleScene extends Scene_Base {
 	public void render(Graphics2D g)
 	{
 		super.render(g);
-		//background.render(g);
 
 		titlelogo.render(g);
 

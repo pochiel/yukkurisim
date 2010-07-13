@@ -1,6 +1,7 @@
 package yukkurisim;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -27,7 +28,7 @@ public class Widget_Base extends Object_base {
 	private int Relative_x;
 	private int Relative_y;
 	private String mymessage;
-	
+	private Color fontColor;	// フォントカラー
 	
 	public Widget_Base(yukkurisim_main own) {
 		super(own);
@@ -83,6 +84,7 @@ public class Widget_Base extends Object_base {
 		super.initResources();
 		this.alpha = 1.0f;
 		this.nowFadingSwitch = 0;
+		this.fontColor = Color.black;
 	}
 	
 	public void SetFontsize(int size)
@@ -286,7 +288,10 @@ public class Widget_Base extends Object_base {
 			else{
 				if(owner.GameIsFading())
 				{
+					Color tmp = FontMan.getFontColor();
+					FontMan.setFontColor(fontColor);
 					FontMan.drawString(g, mymessage, (int)this.getX(), (int)this.getY());
+					FontMan.setFontColor(tmp);
 				}
 				else
 				{
@@ -295,7 +300,10 @@ public class Widget_Base extends Object_base {
 			        // アルファ値
 			        g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
 	
+					Color tmp = FontMan.getFontColor();
+					FontMan.setFontColor(fontColor);
 					FontMan.drawString(g, mymessage, (int)this.getX(), (int)this.getY());
+					FontMan.setFontColor(tmp);
 					
 					g.setComposite(comp);
 				}
@@ -393,6 +401,14 @@ public class Widget_Base extends Object_base {
 
 	public float getAlpha() {
 		return alpha;
+	}
+
+	public Color getFontColor() {
+		return fontColor;
+	}
+
+	public void setFontColor(Color c) {
+		fontColor = c;
 	}
 
 

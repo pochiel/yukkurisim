@@ -7,12 +7,14 @@ import java.io.*;
 
 public class FontManager extends Object_base {
 	private Font yukkurifont;
+	private Color	fontColor;		// フォントカラー
+
     public FontManager(yukkurisim_main own,int size) {
     	//コンストラクたん
     	super(own);
 		yukkurifont = createFont("/Resource/mikiyu-penji-p.ttf");
 		SetFontSize(size);
-		//yukkurifont = yukkurifont.deriveFont(24.0f);
+		this.fontColor = Color.black;
 	}
 
     public void SetFontSize(int size)
@@ -56,9 +58,10 @@ public class FontManager extends Object_base {
 		
 		//Rectangle2D rectangle = yukkurifont.getStringBounds("あcsあ12", g.getFontRenderContext());
 		int h = (int)this.getHeight(message); //縦方向のピクセル数
-		
+
+		g.setColor(this.fontColor);
+
 		g.setFont(yukkurifont);
-		g.setColor(Color.BLACK);
 	    g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
 	            RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 	    g.drawString(message, my_x, my_y+h); //指定y位置の上に描画するため補正が必要
@@ -101,5 +104,14 @@ public class FontManager extends Object_base {
 	public void doOnMouseEvent() {
 		// TODO 自動生成されたメソッド・スタブ
 		
+	}
+
+	// オブジェクト単位で色が指定できるべきなので、Colorの退避・適用はWidgetbaseでやる
+	public Color getFontColor() {
+		return fontColor;
+	}
+
+	public void setFontColor(Color fontColor) {
+		this.fontColor = fontColor;
 	}
 }
