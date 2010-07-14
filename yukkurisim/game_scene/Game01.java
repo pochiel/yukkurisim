@@ -204,11 +204,9 @@ public class Game01 extends Scene_Base  implements Serializable {
 		
 		background.update(elapsedTime);
 		map1.update(elapsedTime);
-		if(window.GTimer.isMoving())
-		{
-			OnMapObj.update(elapsedTime);
-		}
-		OnMapObj.doClickEvent();	// クリックイベントはタイマの状態に強制されるべきではない
+		
+		OnMapObj.update(elapsedTime);	// タイマ停止時のupdateの実行有無は各Objectに任せる（Fade処理が行われなくなるため
+		OnMapObj.doClickEvent();		// クリックイベントはタイマの状態に強制されるべきではない
 		
 		//メッセージウインドウ系とか
 		window.update(elapsedTime);

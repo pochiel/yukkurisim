@@ -409,19 +409,21 @@ public class yukkuri_base extends Object_base
 	public void update(long elapsedTime){
 		
 		super.update(elapsedTime);	
-
-		// this.Get_Type()の戻り値から100を引いているのは配列の頭に合わせるため。 種族定数は100から始まる。
-		if( GameInfoManager.Get_Instance().getPlayPartState(this.Get_Type()-100) == 定数.アクション_狩り)
+		if(GameTimer.Get_Instance(owner, 定数.画像番号_タイマ).isMoving() )	// タイマが動作している間（タイマ動作時のupdate処理の有無は各objectで指定しないと、Fade処理が実行されなくナッチャウ
 		{
-			doKari(elapsedTime);
-		}
-		else if( GameInfoManager.Get_Instance().getPlayPartState(this.Get_Type()-100) == 定数.アクション_農業)
-		{
-			doFarm(elapsedTime);
-		}
-		else if( GameInfoManager.Get_Instance().getPlayPartState(this.Get_Type()-100) == 定数.アクション_遊ぶ)
-		{
-			doPlay(elapsedTime);
+			// this.Get_Type()の戻り値から100を引いているのは配列の頭に合わせるため。 種族定数は100から始まる。
+			if( GameInfoManager.Get_Instance().getPlayPartState(this.Get_Type()-100) == 定数.アクション_狩り)
+			{
+				doKari(elapsedTime);
+			}
+			else if( GameInfoManager.Get_Instance().getPlayPartState(this.Get_Type()-100) == 定数.アクション_農業)
+			{
+				doFarm(elapsedTime);
+			}
+			else if( GameInfoManager.Get_Instance().getPlayPartState(this.Get_Type()-100) == 定数.アクション_遊ぶ)
+			{
+				doPlay(elapsedTime);
+			}
 		}
 	}
 

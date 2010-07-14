@@ -17,13 +17,15 @@ public class Tree_Object extends Object_base {
 	public void Initialize()
 	{
 		//this.setImages(owner.getImages("image/wood1.gif",1,1));
-		this.setImages(ImageLoader.Get_Instance(owner).getBufferedImage(定数.画像番号_農地));
+		this.setImages(ImageLoader.Get_Instance(owner).getBufferedImage(定数.画像番号_木));
 		
 		this.setAnimate(false); 				// アニメーションしない
 		this.setLoopAnim(false);				// アニメーションをループさせない
 		
 		this.setX(this.Get_Pixel_x(this.my_x,this.my_y)-(this.getWidth()-定数.マップチップ横幅));
 		this.setY(this.Get_Pixel_y(this.my_x,this.my_y)-(this.getHeight()-定数.マップチップ縦幅));
+		
+		this.setActiveToFade(true);
 				
 		//PhLaw.Get_ObjectManager().add(this, 定数.TYPE_木object);	// add登録はbuildウインドウ側で行う
 

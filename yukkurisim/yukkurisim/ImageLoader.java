@@ -70,7 +70,7 @@ public class ImageLoader extends Thread {
 		setBufferedImage(定数.画像番号_川1,owner.getImages("image/river1.gif",1,1));
 		setBufferedImage(定数.画像番号_川2,owner.getImages("image/river2.gif",1,1));
 		setBufferedImage(定数.画像番号_エントランス,owner.getImages("image/enterance.gif",1,1));
-		setBufferedImage(定数.画像番号_木,owner.getImages("image/farm.gif",1,1));
+		setBufferedImage(定数.画像番号_木,owner.getImages("image/wood1.gif",1,1));
 		setBufferedImage(定数.画像番号_農地,owner.getImages("image/farm.gif",1,1));
 		
 		//************************ Widget系ここから ***********************************//
