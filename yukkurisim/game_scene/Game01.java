@@ -79,10 +79,11 @@ public class Game01 extends Scene_Base  implements Serializable {
     	this.background = new ColorBackground(Color.black, 定数.画面幅, 定数.画面高さ);
 
     	iLoader = ImageLoader.Get_Instance(owner);
-    	OnMapObj = new MapObject_Manager(owner,"YUKKURI_REIMU");
+    	//OnMapObj = new MapObject_Manager(owner,"YUKKURI_REIMU");
+    	OnMapObj = owner.phy_law.Get_ObjectManager();
     	
     	/********** マップの宣言 ***********************/
-    	int[][] mapgrid = {
+    	/**int[][] mapgrid = {
     						/*{1,1,1,1,1,1,4,3,1,1},
     						{1,1,1,1,1,1,4,3,1,1},
     						{1,1,1,1,1,1,1,4,3,1},
@@ -107,7 +108,7 @@ public class Game01 extends Scene_Base  implements Serializable {
     						{1,1,1,1,1,1,1,4,3,1},
     						{1,1,1,1,1,1,1,1,4,3},
     						{1,1,1,1,1,1,1,1,4,3},
-    						{1,1,1,1,1,1,1,1,1,4},*/
+    						{1,1,1,1,1,1,1,1,1,4},
     			{0,0,0,0,0,0,1,0,0,0,0,0,0},
     			{0,0,0,0,0,1,1,0,0,0,0,0,0},
     			{0,0,0,0,0,1,1,1,0,0,0,0,0},
@@ -139,13 +140,19 @@ public class Game01 extends Scene_Base  implements Serializable {
   
     	// maptilemanagerとmapobjectmanagerを作成し、物理法則クラスへ登録する
     	MapMan = new MapTileManager(owner , mapgrid);		//マップマネージャでマップを作成する。
+    	
     	map1 = MapMan.GetMapGroup();						//マップマネージャでマップを作成する。
+    	****** マップ作成は OtherLoader で行う
+    	*/
+    	
+    	MapMan = owner.phy_law.Get_TileManager();
+    	map1 = MapMan.GetMapGroup();
     	
     	// アイテムマネージャクラスの登録
     	this.itemMan = ItemManager.Get_Instance(owner);
     	
     	// 物理法則クラスへの登録
-    	owner.phy_law.Set_Manager(MapMan, OnMapObj,itemMan);
+    	owner.phy_law.Set_Manager(MapMan, OnMapObj,itemMan);	// ローディング後、ここでも再登録
 
     	// ゆっくり本体の生成
     	for ( int i= 0 ; i< 30; i++)

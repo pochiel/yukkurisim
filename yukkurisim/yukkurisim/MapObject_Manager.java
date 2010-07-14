@@ -11,13 +11,25 @@ public class MapObject_Manager extends ADV_SpriteGroup_base{
 	private  Const_Value 定数 = new Const_Value();
 	private Object_base Map_grid[][];
 	private int Map_style[][];
-	
+	//private static MapObject_Manager  myself;
 	// 農地を管理する配列
 	private Vector<Object_base> FarmVector = new Vector<Object_base>();
 	public Vector<Object_base> getFarmVector() {
 		return FarmVector;
 	}
 
+	/******* インスタンスを得る(親インスタンスと引き換え) ********/
+	/*public static synchronized MapObject_Manager Get_Instance( yukkurisim_main own , String g_name)
+	{
+		if( myself == null)
+		{
+			myself = new MapObject_Manager(own,g_name);
+		}
+
+		return myself;
+	}*/
+
+	
 	/**
 	 * 農地ベクタを返す。
 	 * @param own

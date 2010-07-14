@@ -8,8 +8,10 @@ import java.awt.image.BufferedImage;
 
 import yukkurisim.ImageLoader;
 import yukkurisim.Object_base;
+import yukkurisim.OtherLoader;
 import yukkurisim.Other_Object;
 import yukkurisim.Widget_Base;
+import yukkurisim.Widget_Manager;
 import yukkurisim.yukkurisim_main;
 
 public class Loading extends Scene_Base {
@@ -37,7 +39,7 @@ public class Loading extends Scene_Base {
 	private int			rotatesize;			// 回転角度(360度法)
 	
 	private ImageLoader 	iLoadertmp;
-	
+	private OtherLoader	otmp;
 	/** ローディング中に表示するクラス **/
 	public Loading(yukkurisim_main own) {
 		super(own);
@@ -58,7 +60,6 @@ public class Loading extends Scene_Base {
 		nowLoading = false;
 		nowFading = false;
 		rotatesize = 0;
-		
 		yImage = owner.getImages("image/reimuwait.gif",6,1);
 		
 		RotateYukkuri = new Other_Object(owner , yImage);
@@ -76,6 +77,7 @@ public class Loading extends Scene_Base {
 		RotateYukkuri.setLocation(NowLoadingText.getX() - RotateYukkuri.getWidth() , 5);
 		RotateYukkuri.setAnimate(true);
 		RotateYukkuri.setBackground(this.background);
+
 	}
 	
 	public void update(long elapsedTime)
@@ -129,7 +131,6 @@ public class Loading extends Scene_Base {
 			}
 			RotateYukkuri.setImages(revimg);
 		}
-		System.out.println("   NowLoadingalp->"+NowLoadingText.getAlpha());
 		if( !nowLoading )
 		{	
 			if( !nowFading )
@@ -138,19 +139,28 @@ public class Loading extends Scene_Base {
 				{
 					iLoadertmp = ImageLoader.Get_Instance(owner);
 					iLoadertmp.start();		// ロード開始
+					otmp = new OtherLoader(owner);
+					otmp.setLogicFlag(定数.ローディング_ロジック1);		// 現在ロジックを分ける必要は生じていないが念のため
+					otmp.start();
+					
 					nowLoading = true;
 				}
 				if ( LoadExitedScene == 定数.SCENE_LOAD )
 				{
 					iLoadertmp = ImageLoader.Get_Instance(owner);				
 					iLoadertmp.start();		// ロード開始
+					otmp = new OtherLoader(owner);
+					otmp.setLogicFlag(定数.ローディング_ロジック1);		// 現在ロジックを分ける必要は生じていないが念のため
+					otmp.start();
 					nowLoading = true;
 				}
 			}
 		}
 		else
 		{ 	// すでにローディングスレッドが走ってるお
-			if( !iLoadertmp.isAlive() )
+			boolean AllThreadisExit = (!iLoadertmp.isAlive())&&(!otmp.isAlive());
+			
+			if( AllThreadisExit )
 			{	//スレッド処理が終了したら
 				owner.setImageLoader( iLoadertmp );
 				nowLoading = false;

@@ -1,6 +1,8 @@
 package yukkurisim;
 
 import gamestatus.Const_Value;
+import gamestatus.GameTimer;
+
 import java.io.*;
 import yukkurisim.yukkurisim_main;
 
@@ -31,6 +33,9 @@ public class Physical_Law_Facade  extends CollisionGroup{
 		else if(this.PartKbn==定数.パート_施策_行動区分)
 		{
 			Widget_Manager.Get_Instance(owner).ClsMessage();
+
+			Widget_Manager.Get_Instance(owner).DrawMessage(GameTimer.Get_Instance(owner, 定数.画像番号_タイマ).Get_Days()+"日目...", this);
+
 			this.PartKbn=定数.パート_育成区分;
 		}
 		/** 育成パート→襲撃パート **/

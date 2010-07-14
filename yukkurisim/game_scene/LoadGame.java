@@ -77,7 +77,8 @@ public class LoadGame extends Scene_Base {
     	
     	iLoader = ImageLoader.Get_Instance(owner);
 
-    	OnMapObj = new MapObject_Manager(owner,"YUKKURI_REIMU");
+    	//OnMapObj = new MapObject_Manager(owner,"YUKKURI_REIMU");
+    	OnMapObj = owner.phy_law.Get_ObjectManager();
     	
     	/********** ƒ}ƒbƒv‚ÌéŒ¾ ***********************/
     	int[][] mapgrid = {
