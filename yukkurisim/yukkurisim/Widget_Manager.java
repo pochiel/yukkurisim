@@ -609,7 +609,7 @@ public class Widget_Manager extends ADV_SpriteGroup_base {
 					ItemUseWindow,
 					定数.ボタンID_アイテム06);
 
-       	ItemUseWindow.Mount_widget(ItemUseWindow_B_10_tojiru, 80, 245);
+       	ItemUseWindow.Mount_widget(ItemUseWindow_B_10_tojiru, 35, 245);
        	ItemUseWindow.Mount_widget(ItemUseWindow_B_01, 15, 30);
        	ItemUseWindow.Mount_widget(ItemUseWindow_B_02, 70, 30);
        	ItemUseWindow.Mount_widget(ItemUseWindow_B_03, 15, 85);
