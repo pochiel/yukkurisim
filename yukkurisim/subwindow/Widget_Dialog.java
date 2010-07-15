@@ -156,6 +156,7 @@ public class Widget_Dialog extends Widget_Base {
 		}
 		else
 		{
+			PopupQue.remove();	//最先頭（現在表示しているメッセージ）を削除
 			this.setActiveToFade(false);
 			Label_Popup.setActiveToFade(false);
 			GameTimer.Get_Instance(owner, 定数.画像番号_タイマ).Set_Timer_State(true);

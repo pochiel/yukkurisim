@@ -158,7 +158,7 @@ public class Game01 extends Scene_Base  implements Serializable {
     	for ( int i= 0 ; i< 30; i++)
     	{
     		yukkuri_base	tmp = new yukkuri_base( owner );
-    		tmp.location(5, 6);
+    		tmp.location((int)(定数.画面横セル幅/2),(int)(定数.画面縦セル幅/2) - 5);		//出現位置はてきとー
     		OnMapObj.add( tmp ,tmp.Get_Type());    		
     	}
     	
