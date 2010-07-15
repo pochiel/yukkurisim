@@ -2,16 +2,16 @@ package gamestatus;
 
 public class Const_Value {
 	// 定数管理クラス
-	public final	int	SCREEN_WIDTH = 800;		//画面幅
+	public final	int	SCREEN_WIDTH = 1024;		//画面幅
 	public final	int 画面幅 = SCREEN_WIDTH;
 	
-	public final	int	SCREEN_HEIGHT = 600;	//画面高さ
+	public final	int	SCREEN_HEIGHT = 768;	//画面高さ
 	public final	int 画面高さ = SCREEN_HEIGHT;
 	
-	public final	int SCREEN_CELL_WIDTH = 13;				//画面横セル幅
+	public final	int SCREEN_CELL_WIDTH = 22;				//画面横セル幅
 	public final	int 画面横セル幅 = SCREEN_CELL_WIDTH;	//画面横セル幅
 	
-	public final	int SCREEN_CELL_HEIGHT = 26;			//画面縦セル幅
+	public final	int SCREEN_CELL_HEIGHT = 44;			//画面縦セル幅
 	public final	int 画面縦セル幅 = SCREEN_CELL_HEIGHT;	//画面縦セル幅
 
 	public final	int MAPCHIP_WIDTH	=	102;				//マップチップの横幅
@@ -104,13 +104,13 @@ public class Const_Value {
 		public final int C_MOJI_THRESHOLD =		2;
 		public final int メッセージテキスト速度 = C_MOJI_THRESHOLD;
 		
-		public final int C_SCROLLING_MAX_X 	=	200;
+		public final int C_SCROLLING_MAX_X 	=	2000;
 		public final int スクロール最大範囲X 	= 	C_SCROLLING_MAX_X;
-		public final int C_SCROLLING_MAX_Y 	=	200;
+		public final int C_SCROLLING_MAX_Y 	=	2000;
 		public final int スクロール最大範囲Y 	= 	C_SCROLLING_MAX_Y;
-		public final int C_SCROLLING_MIN_X 	=	-200;
+		public final int C_SCROLLING_MIN_X 	=	-2000;
 		public final int スクロール最小範囲X 	= 	C_SCROLLING_MIN_X;
-		public final int C_SCROLLING_MIN_Y 	=	-200;
+		public final int C_SCROLLING_MIN_Y 	=	-2000;
 		public final int スクロール最小範囲Y 	= 	C_SCROLLING_MIN_Y;
 		public final int C_SCROLLING_PLAY		=	10;					// スクロール開始となる画面端の「遊び」
 		public final int スクロール遊び		=	C_SCROLLING_PLAY;	// 「遊び」って英語だと「play」なんだねー、へぇー
