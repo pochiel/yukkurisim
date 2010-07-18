@@ -456,9 +456,9 @@ public class Widget_Manager extends ADV_SpriteGroup_base {
        	this.ActionWindow.Mount_widget(ActionWindow_L_02_nougyou, 70, 54);
        	this.ActionWindow.Mount_widget(ActionWindow_L_03_kari, 70, 78);
        	this.ActionWindow.Mount_widget(ActionWindow_O_01_image, 10, 30);
-       	this.ActionWindow.Mount_widget(ActionWindow_L_04_karicheck, 30, 115);
-       	this.ActionWindow.Mount_widget(ActionWindow_L_05_nougyoucheck, 110, 115);
-       	this.ActionWindow.Mount_widget(ActionWindow_L_06_asobicheck, 190, 115);
+       	this.ActionWindow.Mount_widget(ActionWindow_L_04_karicheck, 40, 115);
+       	this.ActionWindow.Mount_widget(ActionWindow_L_05_nougyoucheck, 120, 115);
+       	this.ActionWindow.Mount_widget(ActionWindow_L_06_asobicheck, 200, 115);
        	
        	this.ActionWindow.setActive(false);
        	this.ActionWindow.Set_Scrollable(false);

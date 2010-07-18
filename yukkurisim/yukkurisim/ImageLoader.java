@@ -92,7 +92,7 @@ public class ImageLoader extends Thread {
 		setBufferedImage(定数.画像番号_パニッシュボタン,owner.getImages("image/widget/panish_b.gif",1,1));
 		setBufferedImage(定数.画像番号_ラブボタン,owner.getImages("image/widget/love_b.gif",1,1));		
 		setBufferedImage(定数.画像番号_木ボタン,owner.getImages("image/widget/window_build_B_01.GIF",1,1));
-		setBufferedImage(定数.画像番号_家ボタン,owner.getImages("image/widget/window_build_B_01.GIF",1,1));
+		setBufferedImage(定数.画像番号_家ボタン,owner.getImages("image/widget/window_build_B_02.GIF",1,1));
 		setBufferedImage(定数.画像番号_農地ボタン,owner.getImages("image/widget/window_build_B_03.GIF",1,1));
 		setBufferedImage(定数.画像番号_閉じるボタン,owner.getImages("image/widget/owaru.GIF",1,1));
 		setBufferedImage(定数.画像番号_撤去ボタン,owner.getImages("image/widget/tekkyo.GIF",1,1));
