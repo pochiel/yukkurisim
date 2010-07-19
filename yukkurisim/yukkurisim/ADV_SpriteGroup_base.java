@@ -58,7 +58,8 @@ public class ADV_SpriteGroup_base extends SpriteGroup implements Serializable {
 		for(int i=(msize-1);i>=0;i--){
 			temp = (Object_base)msprites[i];
 			
-			if((temp.isActive())&&(temp.isClicked())){				
+			if((temp.isActive())&&(temp.isClicked())){
+				System.out.println("Å°îΩâûÅ®"+temp);
 				temp.doClickEvent();
 				break;
 			}

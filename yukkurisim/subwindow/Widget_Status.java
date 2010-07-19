@@ -66,6 +66,8 @@ public class Widget_Status extends Widget_Base {
 	
 	public void doClickEvent()
 	{
+		super.doClickEvent();
+
 		if(Button_id==定数.ボタンID_閉じるボタン)
 		{
 			this.Get_Root_Parent().setActiveToFade(false);

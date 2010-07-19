@@ -351,6 +351,11 @@ public class Widget_Base extends Object_base {
 	public void doClickEvent()
 	{
 		System.out.println("widgetbaseのdoclickevent");
+
+		if( this.getAlpha() < 1.0f )
+		{	// フェード処理中は一切の操作を受け付けない
+			return;
+		}
 	}
 
 	public Widget_Base Get_Root_Parent()

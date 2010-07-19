@@ -119,6 +119,7 @@ public class Widget_Build extends Widget_Base {
 	public void doClickEvent()
 	{
 		//System.out.println("Widgetbuildのdoclickevent");
+		super.doClickEvent();
 
 		if(Button_id==定数.ボタンID_木ボタン)
 		{

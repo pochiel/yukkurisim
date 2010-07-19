@@ -56,12 +56,16 @@ public class yukkurisim_main extends Game implements Serializable {
     	
     	/*********** シーンの宣言 ここまで **************/
     	SceneNo = 定数.SCENE_TITLE;		//タイトルシーンからスタート
+    	
+    	mouseUPFlag = false;
+    	lastMouseState = false;
     }
 
     /**
      * 更新
      */
     public void update(long elapsedTime) {
+    	updateMouseUPFlag();	// MouseUPイベント監視
     	
     	//backgroundのレンダリングはシーン側でやるべき	    	
         if(SceneNo == 定数.SCENE_TITLE)
@@ -189,5 +193,30 @@ public class yukkurisim_main extends Game implements Serializable {
 	public void setLoadEndedScene( int sceneno )
 	{
 		nowloading.setNextSceneNo(sceneno);
+	}
+	
+	private boolean mouseUPFlag;		// MouseUPの瞬間にtrueとなる
+	private boolean lastMouseState;	// １ループ前のマウスの状態を保持する
+
+	private void updateMouseUPFlag()
+	{
+		if( (!this.bsInput.isMouseDown(1)) && lastMouseState)	// 前回状態はオンで、現在状態はオフだ
+		{	// 離された瞬間
+			mouseUPFlag = true;
+		}
+		else
+		{
+			mouseUPFlag = false;
+		}
+		lastMouseState = this.bsInput.isMouseDown(1);	// 次ループ用に保持
+	}
+	
+	/**
+	 * マウスが離された瞬間にtrueとなる。
+	 * @return
+	 */
+	public boolean isMouseUp()
+	{
+		return mouseUPFlag;
 	}
 }

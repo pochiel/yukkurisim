@@ -147,6 +147,8 @@ public class Widget_ItemUse extends Widget_Base {
 	
 	public void doClickEvent()
 	{
+		super.doClickEvent();
+
 		//System.out.println("■■"+this.Get_Type());
 		if(this.Get_Type()==定数.ボタンID_閉じるボタン)
 		{

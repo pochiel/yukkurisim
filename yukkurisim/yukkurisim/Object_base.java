@@ -249,10 +249,10 @@ public abstract class Object_base extends AnimatedSprite implements Serializable
 	 */
 	public boolean isClicked()
 	{
-
+		
 		if( this.isScrollable )
 		{
-			if( owner.click() )
+			if( owner.isMouseUp() )
 			{
 				if(	(owner.getMouseX() > this.getX() + this.OwnCursor.Get_RelX()) && ( owner.getMouseX() < this.getX() + this.OwnCursor.Get_RelX()+ this.getWidth())&&	//x方向が画像の範囲内 
 					(owner.getMouseY() > this.getY() + this.OwnCursor.Get_RelY()) && ( owner.getMouseY() < this.getY() + this.OwnCursor.Get_RelY()+ this.getHeight()) )	//y方向が画像の範囲内
@@ -268,7 +268,13 @@ public abstract class Object_base extends AnimatedSprite implements Serializable
 		}
 		else
 		{
-			if( owner.click() )
+			// owner.click() は owner.bsInput.isMousePressed() をコールしているが、これはMouseDownの瞬間にシグナルを拾うため
+			// 他スレッドでアップデートして処理負けしている可能性がある。
+			// しかし、owner.bsInput.isMouseDown() はダウンの間中ずっとtrueを返し続けるので、これもうまくない。
+			// よって、オーナ側でマウスの挙動を監視し、isMouseDownが true→false と変化した瞬間にtrueとなる仕組みにすればよい。
+			// owner.click() と違って同一スレッド上でシグナルのアップデートが保障されるので、オーナのupdate→子のupdate→isclickという仕組みならば
+			// 処理負けもありえない。
+			if( owner.isMouseUp() )
 			{
 				if(	(owner.getMouseX() > this.getX()) && ( owner.getMouseX() < this.getX() + this.getWidth())&&	//x方向が画像の範囲内 
 					(owner.getMouseY() > this.getY()) && ( owner.getMouseY() < this.getY() + this.getHeight()) )	//y方向が画像の範囲内

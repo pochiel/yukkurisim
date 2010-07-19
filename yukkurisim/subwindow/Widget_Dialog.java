@@ -68,6 +68,7 @@ public class Widget_Dialog extends Widget_Base {
 	
 	public void doClickEvent()
 	{
+		super.doClickEvent();
 		if(Button_id==定数.ボタンID_ダイアログOK)
 		{
 			Widget_Dialog tmp = (Widget_Dialog)this.Get_Root_Parent();
@@ -131,10 +132,10 @@ public class Widget_Dialog extends Widget_Base {
     
 	public void Popup_Dialog_Window(String message)
 	{
-		if( PopupQue.size()<=1 )
+		if( PopupQue.size()<1 )
 		{
 			this.setActiveToFade(true);
-			PopupQue.add(message);
+			PopupQue.offer(message);
 			//this.BackupTimerStatus=GTimer.isMoving();	必要になるだろうか？
 			GameTimer.Get_Instance(owner, 定数.画像番号_タイマ).Stop_Timer();
 			this.Label_Popup.Set_Mymessage(PopupQue.peek());	// 取り出しするが、削除しない
@@ -148,14 +149,15 @@ public class Widget_Dialog extends Widget_Base {
 	
 	public void Kill_Dialog_Window()
 	{
-		if( PopupQue.size()>1 )
+		if( PopupQue.size()>1 )		// 2,3,4... の場合
 		{	// まだメッセージ残ってますやん
 			PopupQue.remove();	//最先頭（現在表示しているメッセージ）を削除
 			this.Label_Popup.Set_Mymessage(PopupQue.peek());
 			this.Label_Popup.Set_Relative_Position((this.getWidth()/2)-(Label_Popup.getWidth()/2), 40);
 		}
-		else
+		else						// 1,0 の場合
 		{
+			System.out.println("■キューサイズ→"+PopupQue.size());
 			PopupQue.remove();	//最先頭（現在表示しているメッセージ）を削除
 			this.setActiveToFade(false);
 			Label_Popup.setActiveToFade(false);

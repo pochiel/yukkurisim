@@ -88,7 +88,9 @@ public class Widget_Action extends Widget_Base {
 	}
 	public void doClickEvent()
 	{
-		System.out.println("WidgetActionのdoclickevent");
+		System.out.println("■■WidgetActionのdoclickevent");
+	
+		super.doClickEvent();
 		
 		if(Button_id==定数.ボタンID_閉じるボタン)
 		{
@@ -443,6 +445,11 @@ public class Widget_Action extends Widget_Base {
 	
 	public void update(long elapsedTime)
     {
+		/*if(Button_id==定数.ボタンID_閉じるボタン)
+		{
+			/** デバッグ **/
+			/*System.out.println("■デバッグ→"+this.isClicked());
+		}*/
 		if(this.Get_Parent()==null)
 		{
 			this.Checkboxs.update(elapsedTime);
