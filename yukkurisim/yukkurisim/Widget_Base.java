@@ -352,7 +352,7 @@ public class Widget_Base extends Object_base {
 	{
 		System.out.println("widgetbaseのdoclickevent");
 
-		if( this.getAlpha() < 1.0f )
+		if( this.getNowFadingSwitch()>0 )
 		{	// フェード処理中は一切の操作を受け付けない
 			return;
 		}
