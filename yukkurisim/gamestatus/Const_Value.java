@@ -216,7 +216,7 @@ public class Const_Value {
 		
 		
 		//****************タイマ関連　ここから
-		public final int 一日の長さ			=		200;				// 育成パートの長さ
+		public final int 一日の長さ			=		8000;				// 育成パートの長さ
 		public final int TIME_COUNT_OF_DAY	=		一日の長さ;			// 育成パートの長さ
 		public final int パート_施策_建築区分	=		0;
 		public final int SISAKU_BUILD_KBN		=		パート_施策_建築区分;

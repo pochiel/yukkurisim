@@ -583,7 +583,7 @@ public class yukkuri_base extends Object_base
 		y_hp			= 10;
 		y_grow_lv		= 0;
 		y_exp			= 0;
-    	y_hungry		= 10000;	// ‹ó• “x‚ÍÅ‰100
+    	y_hungry		= ’è”.ˆê“ú‚Ì’·‚³*3;	// ‹ó• “x‚ÍÅ‰100
 		y_sweety		= 10;
 		y_happynes		= 0;
 		y_dex			= 0;

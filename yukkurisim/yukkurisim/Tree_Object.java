@@ -80,7 +80,7 @@ public class Tree_Object extends Object_base {
 	
 	public int Get_Food()
 	{
-		return 10000;		//10000•Ô‚·
+		return ’è”.ˆê“ú‚Ì’·‚³*3;
 	}
 	
 	public void doClickEvent()

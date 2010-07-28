@@ -65,13 +65,13 @@ public class ImageLoader extends Thread {
 		setBufferedImage(定数.画像番号_家4,owner.getImages("image/mapchip/home4.gif", 1, 1));
 		setBufferedImage(定数.画像番号_家5,owner.getImages("image/mapchip/home5.gif", 1, 1));
 		setBufferedImage(定数.画像番号_家6,owner.getImages("image/mapchip/home6.gif", 1, 1));
-		setBufferedImage(定数.画像番号_草原1,owner.getImages("image/sougen1.gif",1,1));
-		setBufferedImage(定数.画像番号_草原2,owner.getImages("image/sougen2.gif",1,1));
-		setBufferedImage(定数.画像番号_川1,owner.getImages("image/river1.gif",1,1));
-		setBufferedImage(定数.画像番号_川2,owner.getImages("image/river2.gif",1,1));
-		setBufferedImage(定数.画像番号_エントランス,owner.getImages("image/enterance.gif",1,1));
-		setBufferedImage(定数.画像番号_木,owner.getImages("image/wood1.gif",1,1));
-		setBufferedImage(定数.画像番号_農地,owner.getImages("image/farm.gif",1,1));
+		setBufferedImage(定数.画像番号_草原1,owner.getImages("image/mapchip/sougen1.gif",1,1));
+		setBufferedImage(定数.画像番号_草原2,owner.getImages("image/mapchip/sougen2.gif",1,1));
+		setBufferedImage(定数.画像番号_川1,owner.getImages("image/mapchip/river1.gif",1,1));
+		setBufferedImage(定数.画像番号_川2,owner.getImages("image/mapchip/river2.gif",1,1));
+		setBufferedImage(定数.画像番号_エントランス,owner.getImages("image/mapchip/enterance.gif",1,1));
+		setBufferedImage(定数.画像番号_木,owner.getImages("image/mapchip/wood1.gif",1,1));
+		setBufferedImage(定数.画像番号_農地,owner.getImages("image/mapchip/farm.gif",1,1));
 		
 		//************************ Widget系ここから ***********************************//
 		setBufferedImage(定数.画像番号_チェックボックスオン,owner.getImages("image/widget/checkT.GIF", 1, 1));

@@ -32,6 +32,19 @@ public class Physical_Law_Facade  extends CollisionGroup{
 		/** 施策(行動)パート→育成パート **/
 		else if(this.PartKbn==定数.パート_施策_行動区分)
 		{
+			/* 全ての移動可能オブジェクトを待機中に変更する*/
+			Sprite[] tmp = MapObj.getSprites();
+			for(int i = 0;i< tmp.length;i++)
+			{
+				if(tmp[i]!=null)
+				{
+					Object_base o = (Object_base)tmp[i];
+					if(o.Get_Type()<定数.TYPE_object_キャラクタと建築物番号敷居値)
+					{	//動作可能なオブジェクトである
+						((yukkuri_base)o).setState(定数.待機中);
+					}
+				}
+			}
 			Widget_Manager.Get_Instance(owner).ClsMessage();
 
 			Widget_Manager.Get_Instance(owner).DrawMessage(GameTimer.Get_Instance(owner, 定数.画像番号_タイマ).Get_Days()+"日目...", this);
