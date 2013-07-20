@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry path="" kind="src"/>
-	<classpathentry path="org.eclipse.jdt.launching.JRE_CONTAINER" kind="con"/>
-	<classpathentry path="C:/Documents and Settings/ポチエル/My Documents/dev/yukkurisim/golden_0_2_3.jar" kind="lib"/>
-	<classpathentry path="" kind="output"/>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="golden_0_2_3.jar"/>
+	<classpathentry kind="output" path=""/>
 </classpath>
