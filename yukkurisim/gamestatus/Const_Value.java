@@ -298,6 +298,7 @@ public class Const_Value {
 		public final int 画像番号_ステータスウインドウ = 31270;
 		public final int 画像番号_アイテムウインドウ = 31300;
 		public final int 画像番号_ダイアログOK = 31320;
+		public final int 画像番号_タイマ_文字盤 = 31221;
 		//************************ アイテム系ここから ***********************************//
 		public final int 画像番号_アイテムハテナ = 31340;
 		

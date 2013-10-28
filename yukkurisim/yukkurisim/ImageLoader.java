@@ -1,10 +1,10 @@
 package yukkurisim;
 import gamestatus.Const_Value;
 
-import java.util.HashMap;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 
 /**
  * 画像を一度に読み込み、保持します。
@@ -80,6 +80,7 @@ public class ImageLoader extends Thread {
 		setBufferedImage(定数.画像番号_メッセージウィンドウ,owner.getImages("image/widget/MessageWindow.gif", 1, 1));
 		setBufferedImage(定数.画像番号_ビルドウインドウ,owner.getImages("image/widget/window_build.GIF",1,1));
 		setBufferedImage(定数.画像番号_タイマ,owner.getImages("image/widget/timer.gif",1,1));
+		setBufferedImage(定数.画像番号_タイマ_文字盤,owner.getImages("image/widget/timer_circle.gif",1,1));
 		setBufferedImage(定数.画像番号_メニュ,owner.getImages("image/widget/menu.gif",1,1));
 		setBufferedImage(定数.画像番号_チェックボタン,owner.getImages("image/widget/check_b.gif",1,1));
 		setBufferedImage(定数.画像番号_ショップボタン,owner.getImages("image/widget/shop_b.gif",1,1));

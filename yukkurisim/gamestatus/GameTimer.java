@@ -1,14 +1,31 @@
 package gamestatus;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import gamestatus.Const_Value;
 import yukkurisim.GameSaveLoader;
 import yukkurisim.ImageLoader;
 import yukkurisim.Object_base;
+import yukkurisim.Other_Object;
 import yukkurisim.yukkurisim_main;
 
+import com.golden.gamedev.util.ImageUtil;
+
 public class GameTimer extends Object_base{
+	//private BufferedImage[] BackUpScrollingImage;
+	private Object_base str_circle;
+	/**
+	 * 回転するゲームタイマ対応render
+	 */
+	public void render(Graphics2D g)
+	{
+		BufferedImage[] tempBuf = str_circle.getImages();
+		tempBuf[0] = ImageUtil.rotate(ImageLoader.Get_Instance(this.owner).getBufferedImage(定数.画像番号_タイマ_文字盤)[0],(int)(((float) this.Times / 定数.一日の長さ)*360));
+		str_circle.setImages(tempBuf);
+		str_circle.render(g);
+		super.render(g);
+	}
+	
 	public GameTimer(yukkurisim_main own) {
 		super(own);
 		// TODO 自動生成されたコンストラクター・スタブ
@@ -16,6 +33,9 @@ public class GameTimer extends Object_base{
 	
 	public GameTimer(yukkurisim_main own , BufferedImage[] arg0, double arg1, double arg2) {
 		super(own,arg0,arg1,arg2);
+		str_circle = new Other_Object(own,ImageLoader.Get_Instance(own).getBufferedImage(定数.画像番号_タイマ_文字盤).clone());
+		str_circle.setLocation(3, 3);
+		str_circle.Set_Scrollable(false);
 	}
 	
 	public static GameTimer myself;
