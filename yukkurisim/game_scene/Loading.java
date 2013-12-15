@@ -11,7 +11,6 @@ import yukkurisim.Object_base;
 import yukkurisim.OtherLoader;
 import yukkurisim.Other_Object;
 import yukkurisim.Widget_Base;
-import yukkurisim.Widget_Manager;
 import yukkurisim.yukkurisim_main;
 
 public class Loading extends Scene_Base {
@@ -46,6 +45,7 @@ public class Loading extends Scene_Base {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
 	
+	@Override
 	public void render(Graphics2D g)
 	{
 		super.render(g);
@@ -53,6 +53,7 @@ public class Loading extends Scene_Base {
 		RotateYukkuri.render(g);
 	}
 	
+	@Override
 	public void initResources() 
 	{
 		super.initResources();
@@ -80,6 +81,7 @@ public class Loading extends Scene_Base {
 
 	}
 	
+	@Override
 	public void update(long elapsedTime)
 	{
 		AffineTransform at = new AffineTransform();
@@ -182,6 +184,7 @@ public class Loading extends Scene_Base {
 	/**
 	 * 終了処理
 	 */
+	@Override
 	public void DestractFadeOut()
 	{
 		super.DestractFadeOut();

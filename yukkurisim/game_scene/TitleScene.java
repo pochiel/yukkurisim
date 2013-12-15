@@ -2,13 +2,10 @@ package game_scene;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Comparator;
 
 
-import com.golden.gamedev.object.*;
 import com.golden.gamedev.object.background.ColorBackground;
 
 import yukkurisim.ADV_SpriteGroup_base;
@@ -39,6 +36,7 @@ public class TitleScene extends Scene_Base {
 			super(own, message, x, y, parent, mytype);
 		}
 
+		@Override
 		public void doClickEvent()
 		{
 			if(this.Button_id==定数.ボタンID_タイトル01)
@@ -73,7 +71,8 @@ public class TitleScene extends Scene_Base {
 		owner = own;
 
 	}
-    public void initResources() {
+    @Override
+	public void initResources() {
     	this.alpha = 0.0f;
     	this.background = new ColorBackground(Color.white, 定数.画面幅, 定数.画面高さ);
     	Label_game1.setBackground(background);
@@ -158,6 +157,7 @@ public class TitleScene extends Scene_Base {
 
     }
     
+	@Override
 	public void update(long elapsedTime)
 	{
 		super.update(elapsedTime);
@@ -199,6 +199,7 @@ public class TitleScene extends Scene_Base {
 		}
 	}
 	
+	@Override
 	public void render(Graphics2D g)
 	{
 		super.render(g);

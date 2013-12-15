@@ -676,11 +676,11 @@ public class Widget_Manager extends ADV_SpriteGroup_base {
 	
 	public void Popup_Dialog_Window(String message)
 	{
-		((Widget_Dialog)DialogWnd).Popup_Dialog_Window(message);
+		DialogWnd.Popup_Dialog_Window(message);
 	}
 	public void Kill_Dialog_Window()
 	{
-		((Widget_Dialog)DialogWnd).Kill_Dialog_Window();
+		DialogWnd.Kill_Dialog_Window();
 	}
 	
 	public boolean DialogisClicked()
@@ -693,7 +693,8 @@ public class Widget_Manager extends ADV_SpriteGroup_base {
 		return MessageWnd.isClicked();
 	}
 
-    public void update(long elapsedTime)
+    @Override
+	public void update(long elapsedTime)
 	{	
     	// ダイアログ処理以外はタイマに従属する
     	if( GTimer.isMoving())	
@@ -881,7 +882,8 @@ public class Widget_Manager extends ADV_SpriteGroup_base {
     	
     }
     
-    public void render(Graphics2D g)
+    @Override
+	public void render(Graphics2D g)
     {
     	super.render(g);
     	//メッセージウインドウ データ表示部

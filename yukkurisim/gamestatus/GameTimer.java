@@ -17,6 +17,7 @@ public class GameTimer extends Object_base{
 	/**
 	 * 回転するゲームタイマ対応render
 	 */
+	@Override
 	public void render(Graphics2D g)
 	{
 		BufferedImage[] tempBuf = str_circle.getImages();
@@ -59,6 +60,7 @@ public class GameTimer extends Object_base{
 	private boolean TimeKbnisChanged;
 	private  Const_Value 定数 = new Const_Value();
 		
+	@Override
 	public void Initialize()
 	{
 		this.Reset_Timer();
@@ -145,15 +147,18 @@ public class GameTimer extends Object_base{
 		return this.Days;
 	}
 
+	@Override
 	public int Get_Type() {
 		return 定数.TYPE_未使用;
 	}
 
+	@Override
 	public void doClickEvent() {
 		// 使用しない
 		
 	}
 	
+	@Override
 	public boolean isCharactor()
 	{
 		return false;

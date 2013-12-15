@@ -1,13 +1,8 @@
 package subwindow;
 
-import gamestatus.Const_Value;
-
 import java.awt.image.BufferedImage;
-import java.util.Comparator;
-
 import com.golden.gamedev.object.Sprite;
 
-import yukkurisim.Object_base;
 import yukkurisim.Widget_Base;
 import yukkurisim.Widget_Manager;
 import yukkurisim.yukkurisim_main;
@@ -64,6 +59,7 @@ public class Widget_Status extends Widget_Base {
 		Initialize();
 	}
 	
+	@Override
 	public void doClickEvent()
 	{
 		super.doClickEvent();
@@ -83,6 +79,7 @@ public class Widget_Status extends Widget_Base {
 		Targetting = targetting;
 	}
 	
+	@Override
 	public void Initialize()
 	{
 		super.Initialize();

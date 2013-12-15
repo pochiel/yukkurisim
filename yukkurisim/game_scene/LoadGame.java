@@ -7,23 +7,16 @@ import java.util.Comparator;
 import yukkurisim.*;
 
 import com.golden.gamedev.object.Background;
-import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.background.ColorBackground;
-import com.golden.gamedev.object.collision.BasicCollisionGroup;
-
 import yukkurisim.Cursor_Manager;
 import yukkurisim.ImageLoader;
 import yukkurisim.ItemManager;
 import yukkurisim.MapObject_Manager;
 import yukkurisim.Object_base;
 import yukkurisim.yukkurisim_main;
-import yukkurisim.Mapchip_base;
-import yukkurisim.yukkuri_base;
 import yukkurisim.ADV_SpriteGroup_base;
-import yukkurisim.Widget_Base;
 import yukkurisim.Widget_Manager;
 import yukkurisim.MapTileManager;
-import yukkurisim.Physical_Law_Facade;
 
 /*********************************************************
  * 
@@ -71,7 +64,8 @@ public class LoadGame extends Scene_Base {
     {
     	super(own);
     }
-    public void initResources() {
+    @Override
+	public void initResources() {
     	
     	this.background = new ColorBackground(Color.black, 定数.画面幅, 定数.画面高さ);
     	
@@ -152,6 +146,7 @@ public class LoadGame extends Scene_Base {
        	OwnCursor = Cursor_Manager.Get_Instance(owner);		// カーソルスクロール
     }
     
+	@Override
 	public void update(long elapsedTime)
 	{
 		super.update(elapsedTime);
@@ -171,6 +166,7 @@ public class LoadGame extends Scene_Base {
 		owner.phy_law.checkCollision();			// 衝突検出
 	}
 	
+	@Override
 	public void render(Graphics2D g)
 	{		
 		super.render(g);

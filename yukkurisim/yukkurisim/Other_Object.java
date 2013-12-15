@@ -27,15 +27,18 @@ public class Other_Object extends Object_base {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
+	@Override
 	public int Get_Type() {
 		return 定数.TYPE_未使用;
 	}
 
+	@Override
 	public void doClickEvent() {
 		// TODO 自動生成されたメソッド・スタブ
 		
 	}
 
+	@Override
 	public boolean isCharactor()
 	{
 		return false;	// これはキャラクターではない

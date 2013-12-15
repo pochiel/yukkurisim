@@ -12,7 +12,6 @@ import yukkurisim.ADV_SpriteGroup_base;
 import yukkurisim.Object_base;
 import yukkurisim.Widget_Base;
 import yukkurisim.yukkurisim_main;
-import yukkurisim.Widget_Manager;
 import yukkurisim.ImageLoader;
 
 public class Widget_Dialog extends Widget_Base {
@@ -66,6 +65,7 @@ public class Widget_Dialog extends Widget_Base {
 		Initialize();
 	}
 	
+	@Override
 	public void doClickEvent()
 	{
 		super.doClickEvent();
@@ -76,6 +76,7 @@ public class Widget_Dialog extends Widget_Base {
 		}
 	}
 
+	@Override
 	public void Initialize()
 	{
 		if(this.Get_Parent()==null)
@@ -111,6 +112,7 @@ public class Widget_Dialog extends Widget_Base {
 
 		}
 	}
+	@Override
 	public void update(long elapsedTime)
 	{
 		super.update(elapsedTime);
@@ -121,7 +123,8 @@ public class Widget_Dialog extends Widget_Base {
 		}
 	}
 	
-    public void render(Graphics2D g)
+    @Override
+	public void render(Graphics2D g)
     {
     	super.render(g);
     	if(this.Get_Parent()==null)

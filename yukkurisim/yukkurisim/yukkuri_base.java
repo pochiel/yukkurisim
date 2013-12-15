@@ -3,18 +3,12 @@ package	yukkurisim;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
 
-//GTGE
-import com.golden.gamedev.*;
-import com.golden.gamedev.object.*;
-import com.golden.gamedev.util.ImageUtil;
 import gamestatus.Const_Value;
 import gamestatus.GameInfoManager;
 import gamestatus.GameTimer;
 import gamestatus.SaveData;
-import com.golden.gamedev.Game;
 import java.util.Random;
 import java.util.Vector;
-import java.lang.Math;
 
 /****************************************************
  * ゆっくり等オブジェクトのベースクラスいずれ抽象化
@@ -106,6 +100,7 @@ public class yukkuri_base extends Object_base
 	 * セル位置情報を変更し、行き先変数に実座標を代入する。
 	 * locationとMove_Toの違いは location→瞬間移動 Move_To→移動開始 でありたい。
 	 */
+	@Override
 	public void location( int x , int y )
 	{
 		super.location(x, y);
@@ -115,6 +110,7 @@ public class yukkuri_base extends Object_base
 	/***
 	 * クリック時のイベント記述
 	 */
+	@Override
 	public void doClickEvent()
 	{
 		// ステータスウインドウ対象入力で待ち状態か？
@@ -406,6 +402,7 @@ public class yukkuri_base extends Object_base
 		UpdateImage();		
 	}
 	
+	@Override
 	public void update(long elapsedTime){
 		
 		super.update(elapsedTime);	
@@ -522,6 +519,7 @@ public class yukkuri_base extends Object_base
 		this.state = ToState;
 	}
 
+	@Override
 	public void render(Graphics2D g)
 	{
 		if(Physical_Law_Facade.Get_Instance(owner).Get_Part()==定数.パート_育成区分)
@@ -610,6 +608,7 @@ public class yukkuri_base extends Object_base
 
 	}
 
+	@Override
 	public int Get_Type() {
 		return 定数.TYPE_ゆっくりobject;
 	}
@@ -675,6 +674,7 @@ public class yukkuri_base extends Object_base
 		this.y_birthday = y_birthday;
 	}
 
+	@Override
 	public boolean isCharactor()
 	{
 		return true;	// これはキャラクターである

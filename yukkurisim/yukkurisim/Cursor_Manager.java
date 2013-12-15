@@ -1,8 +1,6 @@
 package yukkurisim;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-
 import gamestatus.Const_Value;
 
 /**
@@ -120,7 +118,8 @@ public class Cursor_Manager extends ADV_SpriteGroup_base {
 		CursorCount=20;
 	}
 	
-    public void render(Graphics2D g) {
+    @Override
+	public void render(Graphics2D g) {
     	CheckCursorInstanceisNotNull();
     	
     	double dmy_x;
@@ -150,6 +149,7 @@ public class Cursor_Manager extends ADV_SpriteGroup_base {
     	}
     }
     
+	@Override
 	public void update(long elapsedTime)
 	{
 		CheckCursorInstanceisNotNull();

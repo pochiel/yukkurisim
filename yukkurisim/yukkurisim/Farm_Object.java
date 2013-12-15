@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
  */
 public class Farm_Object extends Object_base {
 
+	@Override
 	public void Initialize()
 	{
 		this.setImages(ImageLoader.Get_Instance(owner).getBufferedImage(’è”.‰æ‘œ”Ô†_”_’n));

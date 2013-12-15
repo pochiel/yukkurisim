@@ -3,19 +3,15 @@ package subwindow;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import com.golden.gamedev.object.Sprite;
-
 import gamestatus.GameInfoManager;
 
 import yukkurisim.Cursor_Manager;
 import yukkurisim.Farm_Object;
-import yukkurisim.Object_base;
 import yukkurisim.Widget_Manager;
 import yukkurisim.Widget_Base;
 import yukkurisim.yukkurisim_main;
 import yukkurisim.Tree_Object;
 import yukkurisim.House_Object;
-import yukkurisim.MapTileManager;
 
 public class Widget_Build extends Widget_Base {
     private Cursor_Manager	OwnCursor;				// カーソル
@@ -70,6 +66,7 @@ public class Widget_Build extends Widget_Base {
 		Initialize();
 	}
 	
+	@Override
 	public void Initialize()
 	{
 		OwnCursor = Cursor_Manager.Get_Instance(owner);		// カーソル
@@ -81,6 +78,7 @@ public class Widget_Build extends Widget_Base {
 		}
 	}
 	
+	@Override
 	public void doOnMouseEvent()
 	{
 		if(Button_id==定数.ボタンID_木ボタン)
@@ -116,6 +114,7 @@ public class Widget_Build extends Widget_Base {
 		}
 	}
 	
+	@Override
 	public void doClickEvent()
 	{
 		//System.out.println("Widgetbuildのdoclickevent");
@@ -159,7 +158,8 @@ public class Widget_Build extends Widget_Base {
 
 		}
 	}
-    public void update(long elapsedTime)
+    @Override
+	public void update(long elapsedTime)
     {
     	if(Button_id==定数.ラベルID_建築_所持金)
     	{	//所持金表示
@@ -174,7 +174,8 @@ public class Widget_Build extends Widget_Base {
     	super.update(elapsedTime);
     }
 
-    public void render(Graphics2D g) {
+    @Override
+	public void render(Graphics2D g) {
     	super.render(g);
 
     	if(this.ItemIndex!=0)
@@ -184,6 +185,7 @@ public class Widget_Build extends Widget_Base {
     	}
     }
 
+	@Override
 	public void Comeback_From_Cursor(int x,int y,int s)
 	{
 		GameInfoManager gman = GameInfoManager.Get_Instance();

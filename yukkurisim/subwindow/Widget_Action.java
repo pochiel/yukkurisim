@@ -86,6 +86,7 @@ public class Widget_Action extends Widget_Base {
 		super(own,message,x,y,parent,mytype);
 		Initialize();
 	}
+	@Override
 	public void doClickEvent()
 	{
 		System.out.println("■■WidgetActionのdoclickevent");
@@ -224,6 +225,7 @@ public class Widget_Action extends Widget_Base {
 		}
 	}
 	
+	@Override
 	public void Initialize()
 	{
 		this.Syuzoku_List = new int[定数.TYPE_キャラクター系タイプ総数];
@@ -381,7 +383,7 @@ public class Widget_Action extends Widget_Base {
 			{
 				if(num_cnt[i]!=0)
 				{
-					Cooperative_List[i] = (int)(Cooperative_List[i]/num_cnt[i]);
+					Cooperative_List[i] = Cooperative_List[i]/num_cnt[i];
 				}
 			}
 		}
@@ -435,7 +437,7 @@ public class Widget_Action extends Widget_Base {
 			{
 				if(num_cnt[i]!=0)
 				{
-					Hunting_List[i] = (int)(Hunting_List[i]/num_cnt[i]);
+					Hunting_List[i] = Hunting_List[i]/num_cnt[i];
 				}
 			}
 		}
@@ -443,6 +445,7 @@ public class Widget_Action extends Widget_Base {
 
 	
 	
+	@Override
 	public void update(long elapsedTime)
     {
 		/*if(Button_id==定数.ボタンID_閉じるボタン)
@@ -478,7 +481,8 @@ public class Widget_Action extends Widget_Base {
     	super.update(elapsedTime);
     }
 	
-    public void render(Graphics2D g)
+    @Override
+	public void render(Graphics2D g)
     {
     	super.render(g);
     	if(this.Get_Parent()==null)
@@ -488,7 +492,8 @@ public class Widget_Action extends Widget_Base {
     	//System.out.println("this→"+this+"  this.alp→"+this.alpha+"   this.isact→"+this.isActive());
     }
     
-    public void doOnMouseEvent()
+    @Override
+	public void doOnMouseEvent()
     {
     	if(Widget_Manager.Get_Instance(owner).getMessenger()!=this)
     	{

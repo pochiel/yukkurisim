@@ -6,9 +6,6 @@ import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import subwindow.Widget_Build;
-
-import com.golden.gamedev.object.AnimatedSprite;
 import com.golden.gamedev.object.Sprite;
 
 import yukkurisim.ADV_SpriteGroup_base;
@@ -79,6 +76,7 @@ public class Widget_Base extends Object_base {
 		
 	}
 	
+	@Override
 	public void initResources()
 	{
 		super.initResources();
@@ -179,6 +177,7 @@ public class Widget_Base extends Object_base {
 		return this.my_child.getSize();
 	}
 	
+	@Override
 	public void Set_Scrollable(boolean s)
 	{
 		Sprite[] sprites = this.my_child.getSprites();
@@ -192,6 +191,7 @@ public class Widget_Base extends Object_base {
 		}
 		this.isScrollable = s;			// 自分も変える
 	}
+	@Override
 	public void setActive(boolean s)
 	{
 		super.setActive(s);
@@ -206,6 +206,7 @@ public class Widget_Base extends Object_base {
 			}
 		}	
 	}
+	@Override
 	public void setActiveToFade(boolean s)
 	{
 		if(s)
@@ -244,6 +245,7 @@ public class Widget_Base extends Object_base {
 		//this.my_child.setActive(s);		//非activeな子は自動でアップデートされない		
 	}
 
+	@Override
 	public void update(long elapsedTime)
 	{
 		if( this.isActive() )
@@ -270,6 +272,7 @@ public class Widget_Base extends Object_base {
 		}
 	}
 	
+	@Override
 	public void render(Graphics2D g)
 	{
 
@@ -315,6 +318,7 @@ public class Widget_Base extends Object_base {
 
 	}
 
+	@Override
 	public int getWidth()
 	{
 		if(mymessage==null)
@@ -327,6 +331,7 @@ public class Widget_Base extends Object_base {
 		}
 	}
 
+	@Override
 	public int getHeight()
 	{
 		if(mymessage==null)
@@ -344,10 +349,12 @@ public class Widget_Base extends Object_base {
 		this.mymessage = s;
 	}
 	
+	@Override
 	public int Get_Type() {
 		return this.Button_id;
 	}
 
+	@Override
 	public void doClickEvent()
 	{
 		System.out.println("widgetbaseのdoclickevent");
@@ -382,6 +389,7 @@ public class Widget_Base extends Object_base {
 		return my_child;
 	}
 	
+	@Override
 	public boolean isCharactor()
 	{
 		return false;	// これはキャラクターではない
@@ -392,18 +400,22 @@ public class Widget_Base extends Object_base {
 		// TODO 自動生成されたメソッド・スタブ
 	}
 
+	@Override
 	public int getNowFadingSwitch() {
 		return nowFadingSwitch;
 	}
 
+	@Override
 	public void setNowFadingSwitch(int nowFadingSwitch) {
 		this.nowFadingSwitch = nowFadingSwitch;
 	}
 
+	@Override
 	public void setAlpha(float alpha) {
 		this.alpha = alpha;
 	}
 
+	@Override
 	public float getAlpha() {
 		return alpha;
 	}

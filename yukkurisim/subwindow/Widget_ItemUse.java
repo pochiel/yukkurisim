@@ -59,6 +59,7 @@ public class Widget_ItemUse extends Widget_Base {
 		Initialize();
 	}
 
+	@Override
 	public void Initialize()
 	{
 		if(this.Get_Parent()==null)
@@ -124,6 +125,7 @@ public class Widget_ItemUse extends Widget_Base {
 		}
 	}
 	
+	@Override
 	public void doOnMouseEvent()
 	{
 		int itemnum = PageIndex*7 + (this.Get_Type()-定数.ボタンID_アイテム01);	//現在表示しているアイテムnoを算出
@@ -145,6 +147,7 @@ public class Widget_ItemUse extends Widget_Base {
 		}
 	}
 	
+	@Override
 	public void doClickEvent()
 	{
 		super.doClickEvent();
@@ -187,7 +190,8 @@ public class Widget_ItemUse extends Widget_Base {
 		}
 	}
 	
-    public void update(long elapsedTime)
+    @Override
+	public void update(long elapsedTime)
     {
     	super.update(elapsedTime);
     	if(this.Get_Parent()!=null)

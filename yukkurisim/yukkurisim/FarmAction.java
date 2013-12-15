@@ -261,7 +261,7 @@ public class FarmAction extends ItemGeneratorActionBase {
 	@Override
 	public int getIndexLevel(int status) {
 		// 基本コレでよいような気がするんだがなあ・・・
-		return (int)(status/UniqueTable.size());
+		return status/UniqueTable.size();
 	}
 
 	@Override

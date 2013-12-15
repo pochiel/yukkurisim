@@ -1,7 +1,6 @@
 
 package yukkurisim;
 
-import java.util.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -10,20 +9,12 @@ import java.awt.event.KeyEvent;
 import com.golden.gamedev.*;
 import com.golden.gamedev.object.*;
 import com.golden.gamedev.object.background.ColorBackground;
-import com.golden.gamedev.object.AnimatedSprite;
-
-import yukkurisim.yukkuri_base;
-import yukkurisim.Mapchip_base;
-import yukkurisim.MapObject_Manager;
-
 // 定数クラス
 import gamestatus.Const_Value;
 
 // シーンクラス
 import game_scene.*;
 
-// タイマクラス
-import gamestatus.GameTimer;
 import java.io.*;
 public class yukkurisim_main extends Game implements Serializable {	
     public Background background; 							// 背景
@@ -42,7 +33,8 @@ public class yukkurisim_main extends Game implements Serializable {
     public Physical_Law_Facade phy_law;
     static  Const_Value	定数;
 
-    public void initResources() {
+    @Override
+	public void initResources() {
     	background = new ColorBackground(Color.black, 定数.画面幅, 定数.画面高さ);
     	phy_law = Physical_Law_Facade.Get_Instance(this);
     	
@@ -64,7 +56,8 @@ public class yukkurisim_main extends Game implements Serializable {
     /**
      * 更新
      */
-    public void update(long elapsedTime) {
+    @Override
+	public void update(long elapsedTime) {
     	updateMouseUPFlag();	// MouseUPイベント監視
     	
     	//backgroundのレンダリングはシーン側でやるべき	    	
@@ -94,7 +87,8 @@ public class yukkurisim_main extends Game implements Serializable {
     /**
      * レンダリング
      */
-    public void render(Graphics2D g) {
+    @Override
+	public void render(Graphics2D g) {
 
     	if(SceneNo == 定数.SCENE_TITLE)
         {

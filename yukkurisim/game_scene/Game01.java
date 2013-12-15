@@ -11,19 +11,13 @@ import java.util.Comparator;
 import yukkurisim.*;
 
 import com.golden.gamedev.object.Background;
-import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.background.ColorBackground;
-import com.golden.gamedev.object.collision.BasicCollisionGroup;
-
 import yukkurisim.MapObject_Manager;
 import yukkurisim.yukkurisim_main;
-import yukkurisim.Mapchip_base;
 import yukkurisim.yukkuri_base;
 import yukkurisim.ADV_SpriteGroup_base;
-import yukkurisim.Widget_Base;
 import yukkurisim.Widget_Manager;
 import yukkurisim.MapTileManager;
-import yukkurisim.Physical_Law_Facade;
 
 /*********************************************************
  * 
@@ -72,7 +66,8 @@ public class Game01 extends Scene_Base  implements Serializable {
     {
     	super(own);
     }
-    public void initResources() {
+    @Override
+	public void initResources() {
     	super.initResources();
     	this.alpha = 0.0f;
 
@@ -158,7 +153,7 @@ public class Game01 extends Scene_Base  implements Serializable {
     	for ( int i= 0 ; i< 30; i++)
     	{
     		yukkuri_base	tmp = new yukkuri_base( owner );
-    		tmp.location((int)(定数.画面横セル幅/2),(int)(定数.画面縦セル幅/2) - 5);		//出現位置はてきとー
+    		tmp.location(定数.画面横セル幅/2,定数.画面縦セル幅/2 - 5);		//出現位置はてきとー
     		OnMapObj.add( tmp ,tmp.Get_Type());    		
     	}
     	
@@ -198,7 +193,8 @@ public class Game01 extends Scene_Base  implements Serializable {
     
 	private int call_day;
 	
-    public void update(long elapsedTime)
+    @Override
+	public void update(long elapsedTime)
 	{
 		super.update(elapsedTime);
 		
@@ -240,6 +236,7 @@ public class Game01 extends Scene_Base  implements Serializable {
 		}
 	}
 	
+	@Override
 	public void render(Graphics2D g)
 	{	
 		super.render(g);

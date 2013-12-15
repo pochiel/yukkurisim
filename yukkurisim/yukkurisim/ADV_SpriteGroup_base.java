@@ -1,13 +1,7 @@
 package yukkurisim;
 
-import java.awt.Graphics2D;
 import java.io.Serializable;
-import java.util.*;
-import com.golden.gamedev.*;
 import com.golden.gamedev.object.*;
-import com.golden.gamedev.Game;
-
-import yukkurisim.yukkuri_base;
 import yukkurisim.yukkurisim_main;
 
 public class ADV_SpriteGroup_base extends SpriteGroup implements Serializable {

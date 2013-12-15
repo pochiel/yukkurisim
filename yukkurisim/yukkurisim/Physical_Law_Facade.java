@@ -3,7 +3,6 @@ package yukkurisim;
 import gamestatus.Const_Value;
 import gamestatus.GameTimer;
 
-import java.io.*;
 import yukkurisim.yukkurisim_main;
 
 import com.golden.gamedev.object.Sprite;
@@ -161,6 +160,7 @@ public class Physical_Law_Facade  extends CollisionGroup{
 	private Object_base MySprite1;
 	private Object_base MySprite2;
 	
+	@Override
 	public void collided(Sprite arg0, Sprite arg1) 
 	{
 		// Ç‘Ç¬Ç©Ç¡ÇΩÇ∆Ç´Å`ÅÙ
@@ -234,8 +234,8 @@ public class Physical_Law_Facade  extends CollisionGroup{
 	 * **/
 	public void GetBack(Object_base arg0, Object_base arg1)
 	{
-		arg0.go2x=(int)arg0.Get_Pixel_x(arg0.old_my_x, arg0.old_my_y);
-		arg0.go2y=(int)arg0.Get_Pixel_y(arg0.old_my_x, arg0.old_my_y);
+		arg0.go2x=arg0.Get_Pixel_x(arg0.old_my_x, arg0.old_my_y);
+		arg0.go2y=arg0.Get_Pixel_y(arg0.old_my_x, arg0.old_my_y);
 
 		//System.out.println("2,"+arg0.myId+","+arg0.my_x+","+arg0.my_y+","+arg0.old_my_x+","+arg0.old_my_y+","+arg0.go2x+","+arg0.go2y+",recovering=1");
 

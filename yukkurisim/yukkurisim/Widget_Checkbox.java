@@ -1,7 +1,5 @@
 package yukkurisim;
 
-import gamestatus.Const_Value;
-
 import java.awt.image.BufferedImage;
 
 import subwindow.Widget_Build;
@@ -93,6 +91,7 @@ public class Widget_Checkbox extends Widget_Base {
 		super(own, message, x, y, parent, mytype);
 		Initialize();
 	}
+	@Override
 	public void update(long elapsedTime){
 		super.update(elapsedTime);
 		this.CheckImageInstance();	// 画像があっているかのチェック
@@ -128,6 +127,7 @@ public class Widget_Checkbox extends Widget_Base {
 		}
 	}
 	
+	@Override
 	public void Initialize()
 	{
 		//this.TrueImage = owner.getImages("image/widget/checkT.GIF", 1, 1);
@@ -141,6 +141,7 @@ public class Widget_Checkbox extends Widget_Base {
 	/***
 	 * クリック時のイベント記述
 	 */
+	@Override
 	public void doClickEvent()
 	{
 		this.Change_Value();

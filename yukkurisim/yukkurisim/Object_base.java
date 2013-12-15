@@ -8,9 +8,7 @@ import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.io.Serializable;
 
-import com.golden.gamedev.Game;
 import com.golden.gamedev.object.AnimatedSprite;
-import com.golden.gamedev.object.Sprite;
 //import com.golden.gamedev.Game;
 import yukkurisim.yukkurisim_main;
 
@@ -129,6 +127,7 @@ public abstract class Object_base extends AnimatedSprite implements Serializable
 		isScrollable = s;
 	}
 	
+	@Override
 	public void update(long elapsedTime)
 	{
 		if( this.getNowFadingSwitch()==1 )
@@ -152,6 +151,7 @@ public abstract class Object_base extends AnimatedSprite implements Serializable
 		super.update(elapsedTime);
 	}
 	
+	@Override
 	public void render(Graphics2D g)
 	{
 		if( owner.GameIsFading() )
@@ -329,8 +329,8 @@ public abstract class Object_base extends AnimatedSprite implements Serializable
 	{
 		my_x = x;
 		my_y = y;
-		this.setX((double)this.Get_Pixel_x(my_x, my_y));
-		this.setY((double)this.Get_Pixel_y(my_x, my_y));
+		this.setX(this.Get_Pixel_x(my_x, my_y));
+		this.setY(this.Get_Pixel_y(my_x, my_y));
 		
 	}
 	
@@ -350,15 +350,15 @@ public abstract class Object_base extends AnimatedSprite implements Serializable
 		rx = (int) this.getX();
 		ry = (int) this.getY();
 		
-		tmp_my_y = (int)( 2 * ry/(定数.マップチップ縦幅-6) );		//yセル座標を算出
+		tmp_my_y = 2 * ry/(定数.マップチップ縦幅-6);		//yセル座標を算出
 
 		if ( tmp_my_y%2 == 1)
 		{
-			tmp_my_x = (int)( (rx/定数.マップチップ横幅)-(1/2) );
+			tmp_my_x = (rx/定数.マップチップ横幅)-(1/2);
 		}
 		else
 		{
-			tmp_my_x = (int)(rx/定数.マップチップ横幅);
+			tmp_my_x = rx/定数.マップチップ横幅;
 		}
 		
 		if ( tmp_my_x >= 定数.画面横セル幅 )

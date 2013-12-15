@@ -4,9 +4,6 @@ import gamestatus.SaveData;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.util.Comparator;
-
-import com.golden.gamedev.object.Sprite;
 
 public class House_Object extends Object_base {
 	private ADV_SpriteGroup_base	MyGroup;
@@ -117,6 +114,7 @@ public class House_Object extends Object_base {
 	}
 	
 	/* 親オブジェクトだけが描画を行う */
+	@Override
 	public void render(Graphics2D g)
 	{
 		// 子オブジェクトの描画はマップオブジェクトマネージャにまかせる
@@ -139,6 +137,7 @@ public class House_Object extends Object_base {
 		this.my_y	=	mysave.my_y ;
 	}
 	
+	@Override
 	public boolean isCharactor()
 	{
 		return false;	// これはキャラクターではない

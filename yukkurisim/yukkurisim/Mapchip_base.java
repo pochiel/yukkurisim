@@ -3,7 +3,6 @@ package yukkurisim;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import com.golden.gamedev.Game;
 import yukkurisim.yukkurisim_main;
 
 public class Mapchip_base extends Object_base {
@@ -77,6 +76,7 @@ public class Mapchip_base extends Object_base {
 		this.my_chiptype = Chiptype;
 	}
 
+	@Override
 	public void update(long elapsedTime)
 	{
 		// 横はそのままのサイズで、縦は半分(25）だけ
@@ -91,15 +91,18 @@ public class Mapchip_base extends Object_base {
 			super.update(elapsedTime);
 	}
 
+	@Override
 	public int Get_Type() {
 		return this.my_chiptype;
 	}
 
+	@Override
 	public void doClickEvent() {
 		// TODO 自動生成されたメソッド・スタブ
 		
 	}
 	
+	@Override
 	public void render(Graphics2D g)
 	{
 		if(this.getImages()!=null)
@@ -108,6 +111,7 @@ public class Mapchip_base extends Object_base {
 		}
 	}
 	
+	@Override
 	public boolean isCharactor()
 	{
 		return false;	// これはキャラクターではない

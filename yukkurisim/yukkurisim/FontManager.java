@@ -57,7 +57,7 @@ public class FontManager extends Object_base {
 		my_y = y;
 		
 		//Rectangle2D rectangle = yukkurifont.getStringBounds("あcsあ12", g.getFontRenderContext());
-		int h = (int)this.getHeight(message); //縦方向のピクセル数
+		int h = this.getHeight(message); //縦方向のピクセル数
 
 		g.setColor(this.fontColor);
 
@@ -85,16 +85,19 @@ public class FontManager extends Object_base {
 		return (int)rectangle.getHeight(); //横方向のピクセル
 	}
 
+	@Override
 	public int Get_Type() {
 		// 不要ファンクション
 		return 定数.TYPE_未使用;
 	}
 
+	@Override
 	public void doClickEvent() {
 		// TODO 自動生成されたメソッド・スタブ
 		
 	}
 	
+	@Override
 	public boolean isCharactor()
 	{
 		return false;	// これはキャラクターではない

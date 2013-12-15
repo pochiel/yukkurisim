@@ -3,17 +3,16 @@
  */
 package yukkurisim;
 
-import gamestatus.Const_Value;
 import gamestatus.SaveData;
 
 import java.awt.image.BufferedImage;
-import java.util.Random;
 /**
  * @author ポチエル
  *
  */
 public class Tree_Object extends Object_base {
 
+	@Override
 	public void Initialize()
 	{
 		//this.setImages(owner.getImages("image/wood1.gif",1,1));
@@ -83,10 +82,12 @@ public class Tree_Object extends Object_base {
 		return 定数.一日の長さ*3;
 	}
 	
+	@Override
 	public void doClickEvent()
 	{
 		//何もしない
 	}
+	@Override
 	public int Get_Type() {
 		return 定数.TYPE_木object;
 	}
@@ -107,6 +108,7 @@ public class Tree_Object extends Object_base {
 		 this.my_y	=	mysave.my_y ;
 	}
 	
+	@Override
 	public boolean isCharactor()
 	{
 		return false;	// これはキャラクターではない

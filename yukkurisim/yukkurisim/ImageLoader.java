@@ -28,6 +28,7 @@ public class ImageLoader extends Thread {
 		//LoadImage();	// 画像のロード
 	}
 	
+	@Override
 	public void run() {
 		LoadImage();	// 画像のロード開始
 	}

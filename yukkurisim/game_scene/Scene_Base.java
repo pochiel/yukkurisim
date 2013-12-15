@@ -3,13 +3,9 @@ package game_scene;
 import gamestatus.Const_Value;
 
 import java.awt.AlphaComposite;
-import java.awt.Composite;
 import java.awt.Graphics2D;
 
-import com.golden.gamedev.Game;
 import com.golden.gamedev.object.Background;
-import com.golden.gamedev.object.GameFont;
-
 import yukkurisim.yukkurisim_main;
 
 public abstract class Scene_Base {

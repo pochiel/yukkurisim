@@ -24,6 +24,7 @@ public class OtherLoader extends Thread {
 		LogicFlag = 0;
 	}
 	
+	@Override
 	public void run() {
 		if(LogicFlag==0)
 		{
